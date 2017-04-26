@@ -1,10 +1,10 @@
-import view.frames.JAdicionarProcesso;
+import view.frames.JFrameHome;
 
 public class program {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		JAdicionarProcesso objView = new JAdicionarProcesso();
+		JFrameHome objView = new JFrameHome();
 		objView.setVisible(true);
 	}
 
