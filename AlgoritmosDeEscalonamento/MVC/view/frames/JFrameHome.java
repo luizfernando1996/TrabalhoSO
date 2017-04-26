@@ -9,8 +9,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
+
 
 public class JFrameHome extends JFrame {
 
@@ -20,7 +20,7 @@ public class JFrameHome extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel contentPane;
-	private JTable table;
+	public JTable table;
 
 	
 	
@@ -52,17 +52,20 @@ public class JFrameHome extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
+		
 		table = new JTable();
-		table.setBounds(10, 11, 285, 239);
+
+		table.setBounds(10, 11, 267, 239);
 		contentPane.add(table);
 
-		JButton btnAdicionarProcesso = new JButton("Adicionar Processo");
+		JButton btnAdicionarProcesso = new JButton("Adicionar Processos");
 		btnAdicionarProcesso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JAdicionarProcesso objView = new JAdicionarProcesso();
 				objView.setVisible(true);
-				JFrameHome.this.dispose();
+				
+				//Em Eclipse se fecha a janela...em visual studio isto não existe porque o direcionamento do codigo ja vai para outro lugar
+//				JFrameHome.this.dispose();
 			}
 		});
 		btnAdicionarProcesso.setBounds(305, 69, 129, 23);

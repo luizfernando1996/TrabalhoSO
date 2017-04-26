@@ -1,0 +1,10 @@
+		
+		// DefaultListModel DLM = new DefaultListModel();
+		// DLM.addElement(contador);
+		// DLM.addElement(tempoChegada);
+		// DLM.addElement(duracaoSurto);
+		// DLM.addElement(prioridade);
+		//// list.setModel(DLM);
+
+		//		JScrollPane barraRolagem = new JScrollPane(tabela);
+//		painelFundo.add(barraRolagem); 

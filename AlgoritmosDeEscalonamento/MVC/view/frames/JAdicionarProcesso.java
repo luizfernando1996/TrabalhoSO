@@ -1,7 +1,6 @@
 package view.frames;
 
-import controller.roundRobin.RoundRobin;
-import controller.sjf.Sjf;
+import controller.capturarDados.ReceberDadosView;
 import view.frames.JFrameHome;
 
 import javax.swing.JFrame;
@@ -13,7 +12,6 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.awt.event.ActionEvent;
 
@@ -39,9 +37,7 @@ public class JAdicionarProcesso extends JFrame {
 	private JTextField txtFieldPrioridade;
 
 	// Objects of classes
-	private Sjf objSjf = new Sjf();
-	private RoundRobin objRound = new RoundRobin();
-
+	private ReceberDadosView objReceber= new ReceberDadosView();
 	/**
 	 * Create the frame.
 	 * 
@@ -50,9 +46,8 @@ public class JAdicionarProcesso extends JFrame {
 	 */
 
 	public JAdicionarProcesso() {
-
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 346, 219);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -103,6 +98,7 @@ public class JAdicionarProcesso extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				adicionarCamposAoController();
+				limparCampos();
 			}
 		});
 		btnNewButton.setBounds(186, 45, 126, 23);
@@ -120,8 +116,6 @@ public class JAdicionarProcesso extends JFrame {
 		JButton btnRetornar = new JButton("Retornar");
 		btnRetornar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JFrameHome viewHome = new JFrameHome();
-				viewHome.setVisible(true);
 				JAdicionarProcesso.this.dispose();
 			}
 		});
@@ -131,22 +125,14 @@ public class JAdicionarProcesso extends JFrame {
 	}
 
 	private void adicionarCamposAoController() {
-
-		objSjf.setTempoChegada((Integer.parseInt(txtFieldTempoChegada.getText())));
-		objSjf.setDuracaoSurto(Integer.parseInt(txtFieldDuracSurto.getText()));
-		objSjf.setPrioridade(Integer.parseInt(txtFieldPrioridade.getText()));
-
-//		//Test of insertion
-//		JOptionPane.showMessageDialog(null,
-//				" " + objSjf.getTempoChegada() + " " + objSjf.getDuracaoSurto() + " " + objSjf.getPrioridade());
 		
-		objRound.setTempoChegada(Integer.parseInt(txtFieldTempoChegada.getText()));
-		objRound.setDuracaoSurto(Integer.parseInt(txtFieldDuracSurto.getText()));
-		objRound.setPrioridade(Integer.parseInt(txtFieldPrioridade.getText()));
+		objReceber.setTempoChegada(Integer.parseInt(txtFieldTempoChegada.getText()));
+		objReceber.setDuracaoSurto(Integer.parseInt(txtFieldDuracSurto.getText()));
+		objReceber.setPrioridade(Integer.parseInt(txtFieldPrioridade.getText()));
 
 //		//Test of insertion
-//		JOptionPane.showMessageDialog(null,
-//				" " + objRound.getTempoChegada() + " " + objRound.getDuracaoSurto() + " " + objRound.getPrioridade());
+		JOptionPane.showMessageDialog(null,
+				" " + objReceber.getTempoChegada() + " " + objReceber.getDuracaoSurto() + " " + objReceber.getPrioridade());
 	}
 
 	private void limparCampos() {
