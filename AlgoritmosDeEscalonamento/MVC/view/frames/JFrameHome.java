@@ -14,6 +14,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import controller.processo.Processo;
+
 
 public class JFrameHome extends JFrame {
 
@@ -24,6 +26,7 @@ public class JFrameHome extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	private DefaultTableModel modelo;
+	private JScrollPane scrollPane;
 	/**
 	 * Create the frame.
 	 */
@@ -41,7 +44,7 @@ public class JFrameHome extends JFrame {
 				JAdicionarProcesso objView = new JAdicionarProcesso();
 				objView.setVisible(true);
 
-				// Em Eclipse se fecha a janela...em visual studio isto n�o
+				// Em Eclipse se fecha a janela...em visual studio isto não
 				// existe porque o direcionamento do codigo ja vai para outro
 				// lugar
 				// JFrameHome.this.dispose();
@@ -81,7 +84,7 @@ public class JFrameHome extends JFrame {
 		btnTeste.setBounds(469, 197, 89, 23);
 		btnTeste.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				adicionarNaTabela();
+				adicionarNaTabela(null);
 			}
 		});
 		contentPane.setLayout(null);
@@ -91,14 +94,14 @@ public class JFrameHome extends JFrame {
 		contentPane.add(btnNewButton);
 		contentPane.add(btnTeste);
 
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 11, 412, 260);
 		contentPane.add(scrollPane);
 
 		modelo = new DefaultTableModel();
 		table = new JTable(modelo);
 		table.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Numero do Processo", "Tempo de Chegada", "Dura\u00E7\u00E3o do Surto", "Prioridade" }));
+				new String[] { "Numero do Processo", "Tempo de Chegada", "Duração do Surto", "Prioridade" }));
 		table.getColumnModel().getColumn(0).setPreferredWidth(110);
 		table.getColumnModel().getColumn(0).setMinWidth(110);
 		table.getColumnModel().getColumn(1).setMinWidth(104);
@@ -107,14 +110,14 @@ public class JFrameHome extends JFrame {
 
 	}
 
-	public void adicionarNaTabela() {
+	public void adicionarNaTabela(Processo process) {
 		int numCols = table.getModel().getColumnCount();
 
 		Object[] fila = new Object[numCols];
 		fila[0]="a";
-		fila[1]="b";
-		fila[2]="3";
-		fila[3]="4";
+		fila[1]=process.getTempoChegada();
+		fila[2]=process.getDuracaoSurto();
+		fila[3]=process.getPrioridade();
 		
 		((DefaultTableModel)table.getModel()).addRow(fila);
 

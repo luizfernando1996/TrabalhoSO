@@ -8,6 +8,7 @@ import controller.processo.Processo;
 
 import javax.swing.JLabel;
 //import javax.swing.JOptionPane;
+import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -125,15 +126,16 @@ public class JAdicionarProcesso extends JFrame {
 		contentPane.add(btnRetornar);
 	}
 
-	private void adicionarCamposAoController() {
-		
+	public void adicionarCamposAoController() {
+		Processo.setContador(0);
 		objProcesso.setTempoChegada(Integer.parseInt(txtFieldTempoChegada.getText()));
 		objProcesso.setDuracaoSurto(Integer.parseInt(txtFieldDuracSurto.getText()));
 		objProcesso.setPrioridade(Integer.parseInt(txtFieldPrioridade.getText()));
 		JFrameHome objHome=new JFrameHome();
-//		objHome.adicionarNaTabela(objProcesso);
+		objHome.adicionarNaTabela(objProcesso);
+		
 //		//Test of insertion
-//		JOptionPane.showMessageDialog(null,
+		JOptionPane.showMessageDialog(null,"Adicionado com sucesso");
 //				" " + objReceber.getTempoChegada() + " " + objReceber.getDuracaoSurto() + " " + objReceber.getPrioridade());
 	}
 

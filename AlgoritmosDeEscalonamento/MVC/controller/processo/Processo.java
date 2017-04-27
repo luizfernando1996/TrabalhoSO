@@ -13,6 +13,14 @@ public class Processo {
 
 	// ctrl+3 and after "ggas"(generate getters and setters) for to encapsulate
 
+	public static int getContador() {
+		return contador;
+	}
+
+	public static void setContador(int contador) {
+		Processo.contador = contador;
+	}
+	
 	public int getTempoChegada() {
 		return tempoChegada;
 	}
