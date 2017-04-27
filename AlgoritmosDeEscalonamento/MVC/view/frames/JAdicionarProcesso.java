@@ -1,19 +1,20 @@
 package view.frames;
 
-import controller.capturarDados.ReceberDadosView;
-import view.frames.JFrameHome;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.processo.Processo;
+
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.awt.event.ActionEvent;
+import view.frames.JFrameHome;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -35,9 +36,9 @@ public class JAdicionarProcesso extends JFrame {
 	private JTextField txtFieldTempoChegada;
 	private JTextField txtFieldDuracSurto;
 	private JTextField txtFieldPrioridade;
-
+	
 	// Objects of classes
-	private ReceberDadosView objReceber= new ReceberDadosView();
+	public Processo objProcesso= new Processo();
 	/**
 	 * Create the frame.
 	 * 
@@ -126,13 +127,14 @@ public class JAdicionarProcesso extends JFrame {
 
 	private void adicionarCamposAoController() {
 		
-		objReceber.setTempoChegada(Integer.parseInt(txtFieldTempoChegada.getText()));
-		objReceber.setDuracaoSurto(Integer.parseInt(txtFieldDuracSurto.getText()));
-		objReceber.setPrioridade(Integer.parseInt(txtFieldPrioridade.getText()));
-
+		objProcesso.setTempoChegada(Integer.parseInt(txtFieldTempoChegada.getText()));
+		objProcesso.setDuracaoSurto(Integer.parseInt(txtFieldDuracSurto.getText()));
+		objProcesso.setPrioridade(Integer.parseInt(txtFieldPrioridade.getText()));
+		JFrameHome objHome=new JFrameHome();
+//		objHome.adicionarNaTabela(objProcesso);
 //		//Test of insertion
-		JOptionPane.showMessageDialog(null,
-				" " + objReceber.getTempoChegada() + " " + objReceber.getDuracaoSurto() + " " + objReceber.getPrioridade());
+//		JOptionPane.showMessageDialog(null,
+//				" " + objReceber.getTempoChegada() + " " + objReceber.getDuracaoSurto() + " " + objReceber.getPrioridade());
 	}
 
 	private void limparCampos() {

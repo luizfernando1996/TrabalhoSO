@@ -1,7 +1,7 @@
-package controller.capturarDados;
+package controller.processo;
 
 
-public class ReceberDadosView {
+public class Processo {
 
 	// string minusculo ele deseja implementar interface..classe...
 	// deve se digitar String
