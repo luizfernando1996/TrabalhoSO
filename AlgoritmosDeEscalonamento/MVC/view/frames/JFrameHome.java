@@ -137,8 +137,9 @@ public class JFrameHome extends JFrame {
 		fila[1]=process.getTempoChegada();
 		fila[2]=process.getDuracaoSurto();
 		fila[3]=process.getPrioridade();
-		
-		((DefaultTableModel)table.getModel()).addRow(fila);
+		DefaultTableModel model =  (DefaultTableModel) table.getModel();
+		model.addRow(fila);
+		//((DefaultTableModel)table.getModel()).addRow(fila);
 
 	}
 }
