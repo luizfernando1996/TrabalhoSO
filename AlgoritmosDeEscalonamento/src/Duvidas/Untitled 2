@@ -1,2 +1,10 @@
 1- O botão de run como faço para ele se tornar global??
 	Ele só executa nesta aplicação se for a partir de uma classe que não seja view.
+	
+	
+	
+	Soluções as Duvidas
+// Em Eclipse se fecha a janela...em visual studio isto não
+// existe porque o direcionamento do codigo ja vai para outro
+// lugar
+// JFrameHome.this.dispose();

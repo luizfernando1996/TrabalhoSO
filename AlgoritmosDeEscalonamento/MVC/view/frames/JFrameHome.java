@@ -1,7 +1,7 @@
 package view.frames;
 
-import view.frames.JAdicionarProcesso;
 import view.frames.JFrameResultado;
+import controller.processo.Processo;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,19 +15,24 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import controller.processo.Processo;
-
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class JFrameHome extends JFrame {
 
-	
-	//o atributo abaixo é necessario devido ao frame JFrame-->desabilitei a correção das palavras para ingles
+	// o atributo abaixo é necessario devido ao frame JFrame-->desabilitei a
+	// correção das palavras para ingles
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
 	private DefaultTableModel modelo;
 	private JScrollPane scrollPane;
-	
+	private JTextField textField;
+	private JTextField txtFieldTempoChegada;
+	private JTextField txtFieldDuracSurto;
+	private JTextField txtFieldPrioridade;
+
 	/**
 	 * Launch the application.
 	 */
@@ -44,53 +49,48 @@ public class JFrameHome extends JFrame {
 			}
 		});
 	}
-	
-	
+
 	/**
 	 * Create the frame.
 	 */
 	public JFrameHome() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 601, 315);
+		setBounds(100, 100, 528, 491);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
 		JButton btnAdicionarProcesso = new JButton("Adicionar Processos");
-		btnAdicionarProcesso.setBounds(448, 61, 129, 23);
+		btnAdicionarProcesso.setBounds(84, 64, 129, 23);
 		btnAdicionarProcesso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JAdicionarProcesso objView = new JAdicionarProcesso();
-				objView.setVisible(true);
-
-				// Em Eclipse se fecha a janela...em visual studio isto não
-				// existe porque o direcionamento do codigo ja vai para outro
-				// lugar
-				// JFrameHome.this.dispose();
+				Processo process=criarProcesso();
+				adicionarNaTabela(process);
+				limparCampos();
 			}
 		});
 
-		//You should to selection a process for be remove
+		// You should to selection a process for be remove
 		JButton btnRemoverProcesso = new JButton("Remover Processo");
-		btnRemoverProcesso.setBounds(448, 95, 129, 23);
+		btnRemoverProcesso.setBounds(223, 64, 129, 23);
 		btnRemoverProcesso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					modelo=(DefaultTableModel)table.getModel();
-					modelo.removeRow(table.getSelectedRow());
+				modelo = (DefaultTableModel) table.getModel();
+				modelo.removeRow(table.getSelectedRow());
 			}
 		});
 
 		JButton btnLimparTudo = new JButton("Limpar Tudo");
 		btnLimparTudo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				modelo=(DefaultTableModel)table.getModel();
-				
+				modelo = (DefaultTableModel) table.getModel();
+
 			}
 		});
-		btnLimparTudo.setBounds(448, 129, 129, 23);
+		btnLimparTudo.setBounds(57, 403, 129, 23);
 
 		JButton btnNewButton = new JButton("Executar");
-		btnNewButton.setBounds(448, 163, 129, 23);
+		btnNewButton.setBounds(223, 403, 129, 23);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrameResultado viewResul = new JFrameResultado();
@@ -100,12 +100,7 @@ public class JFrameHome extends JFrame {
 		});
 
 		JButton btnTeste = new JButton("TESTE");
-		btnTeste.setBounds(469, 197, 89, 23);
-		btnTeste.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				adicionarNaTabela(null);
-			}
-		});
+		btnTeste.setBounds(374, 403, 89, 23);
 		contentPane.setLayout(null);
 		contentPane.add(btnAdicionarProcesso);
 		contentPane.add(btnRemoverProcesso);
@@ -114,7 +109,7 @@ public class JFrameHome extends JFrame {
 		contentPane.add(btnTeste);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 412, 260);
+		scrollPane.setBounds(10, 109, 486, 283);
 		contentPane.add(scrollPane);
 
 		modelo = new DefaultTableModel();
@@ -127,21 +122,72 @@ public class JFrameHome extends JFrame {
 		table.getColumnModel().getColumn(2).setMinWidth(100);
 		scrollPane.setViewportView(table);
 
+		textField = new JTextField();
+		textField.setEditable(false);
+		textField.setColumns(10);
+		textField.setBounds(10, 26, 126, 20);
+		contentPane.add(textField);
+
+		JLabel label = new JLabel("Numero do Processo:");
+		label.setFont(new Font("Tahoma", Font.BOLD, 12));
+		label.setBounds(10, 11, 139, 14);
+		contentPane.add(label);
+
+		txtFieldTempoChegada = new JTextField();
+		txtFieldTempoChegada.setColumns(10);
+		txtFieldTempoChegada.setBounds(146, 26, 126, 20);
+		contentPane.add(txtFieldTempoChegada);
+
+		JLabel label_1 = new JLabel("Tempo de chegada:");
+		label_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		label_1.setBounds(148, 11, 126, 14);
+		contentPane.add(label_1);
+
+		txtFieldDuracSurto = new JTextField();
+		txtFieldDuracSurto.setColumns(10);
+		txtFieldDuracSurto.setBounds(282, 26, 126, 20);
+		contentPane.add(txtFieldDuracSurto);
+
+		JLabel label_2 = new JLabel("Duracação do Surto:");
+		label_2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		label_2.setBounds(282, 11, 139, 14);
+		contentPane.add(label_2);
+
+		txtFieldPrioridade = new JTextField();
+		txtFieldPrioridade.setColumns(10);
+		txtFieldPrioridade.setBounds(422, 26, 74, 20);
+		contentPane.add(txtFieldPrioridade);
+
+		JLabel label_3 = new JLabel("Prioridade:");
+		label_3.setFont(new Font("Tahoma", Font.BOLD, 12));
+		label_3.setBounds(422, 11, 74, 14);
+		contentPane.add(label_3);
+
 	}
+	
+	public Processo criarProcesso() {
+		Processo objProcesso = new Processo();
+		Processo.setContador(0);
+		objProcesso.setTempoChegada(Integer.parseInt(txtFieldTempoChegada.getText()));
+		objProcesso.setDuracaoSurto(Integer.parseInt(txtFieldDuracSurto.getText()));
+		objProcesso.setPrioridade(Integer.parseInt(txtFieldPrioridade.getText()));
+		return objProcesso;
+	}
+	public void adicionarNaTabela(Processo processo) {	
+			int numCols = table.getModel().getColumnCount();
+			
+			Object[] fila = new Object[numCols];
 
-	public void adicionarNaTabela(Processo process) {
-		int numCols = table.getModel().getColumnCount();
+			fila[0] = Processo.getContador();
+			fila[1] = processo.getTempoChegada();
+			fila[2] = processo.getDuracaoSurto();
+			fila[3] = processo.getPrioridade();
 
-		Object[] fila = new Object[numCols];
-		fila[0]="a";
-		fila[1]=process.getTempoChegada();
-		fila[2]=process.getDuracaoSurto();
-		fila[3]=process.getPrioridade();
-		DefaultTableModel model =  (DefaultTableModel) table.getModel();
-		model.addRow(fila);
-		((DefaultTableModel)table.getModel()).addRow(fila);
-		
+			((DefaultTableModel) table.getModel()).addRow(fila);	
+	}
+	private void limparCampos() {
+		txtFieldPrioridade.setText(null);
+		txtFieldDuracSurto.setText(null);
+		txtFieldTempoChegada.setText(null);	
 	}
 }
-
-
