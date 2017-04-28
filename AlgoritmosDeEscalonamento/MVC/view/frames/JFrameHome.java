@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 import java.awt.Font;
 
@@ -95,6 +95,7 @@ public class JFrameHome extends JFrame {
 		btnNewButton.setBounds(223, 403, 129, 23);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				obterDadosTabela();
 				JFrameResultado viewResul = new JFrameResultado();
 				viewResul.setVisible(true);
 				JFrameHome.this.dispose();
@@ -198,5 +199,10 @@ public class JFrameHome extends JFrame {
 		txtFieldPrioridade.setText(null);
 		txtFieldDuracSurto.setText(null);
 		txtFieldTempoChegada.setText(null);	
+	}
+	private void obterDadosTabela(){
+		int quantProcessos=((DefaultTableModel) table.getModel()).getRowCount();	
+		//Agora é contigo...
+//		processo
 	}
 }
