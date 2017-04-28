@@ -1,0 +1,2 @@
+1- O botão de run como faço para ele se tornar global??
+	Ele só executa nesta aplicação se for a partir de uma classe que não seja view.
