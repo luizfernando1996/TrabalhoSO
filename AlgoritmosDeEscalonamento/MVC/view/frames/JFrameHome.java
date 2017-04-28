@@ -20,8 +20,8 @@ import controller.processo.Processo;
 
 public class JFrameHome extends JFrame {
 
-
-	//o atributo abaixo é necessario devido ao frame JFrame
+	
+	//o atributo abaixo é necessario devido ao frame JFrame-->desabilitei a correção das palavras para ingles
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
@@ -31,6 +31,7 @@ public class JFrameHome extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -138,8 +139,8 @@ public class JFrameHome extends JFrame {
 		fila[3]=process.getPrioridade();
 		DefaultTableModel model =  (DefaultTableModel) table.getModel();
 		model.addRow(fila);
-		//((DefaultTableModel)table.getModel()).addRow(fila);
-
+		((DefaultTableModel)table.getModel()).addRow(fila);
+		
 	}
 }
 
