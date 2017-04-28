@@ -12,5 +12,4 @@ public class Sjf {
 		array=objReceber.fornecerDadosView();
 		//array[0]--->Counter of process
 	}
-
 }

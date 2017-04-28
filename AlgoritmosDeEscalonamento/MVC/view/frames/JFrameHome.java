@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.EventQueue;
 //import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
@@ -27,6 +28,24 @@ public class JFrameHome extends JFrame {
 	private JTable table;
 	private DefaultTableModel modelo;
 	private JScrollPane scrollPane;
+	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					JFrameHome frame = new JFrameHome();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	
 	/**
 	 * Create the frame.
 	 */
@@ -124,20 +143,4 @@ public class JFrameHome extends JFrame {
 	}
 }
 
-// ISTO AQUI EM BAIXO SERVE PARA QUE???
-/**
- * Launch the application.
- */
-// public static void main(String[] args) {
-// EventQueue.invokeLater(new Runnable() {
-// public void run() {
-// try {
-// JFrameHome frame = new JFrameHome();
-// frame.setVisible(true);
-// } catch (Exception e) {
-// e.printStackTrace();
-// }
-// }
-// });
-// }
-// ISTO AQUI EM CIMA SERVE PARA QUE???
+
