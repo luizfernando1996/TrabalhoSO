@@ -17,6 +17,8 @@ import javax.swing.table.DefaultTableModel;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 
 public class JFrameHome extends JFrame {
@@ -28,7 +30,7 @@ public class JFrameHome extends JFrame {
 	private JTable table;
 	private DefaultTableModel modelo;
 	private JScrollPane scrollPane;
-	private JTextField textField;
+	private JTextField txtFieldNumeroProcesso;
 	private JTextField txtFieldTempoChegada;
 	private JTextField txtFieldDuracSurto;
 	private JTextField txtFieldPrioridade;
@@ -122,11 +124,12 @@ public class JFrameHome extends JFrame {
 		table.getColumnModel().getColumn(2).setMinWidth(100);
 		scrollPane.setViewportView(table);
 
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setColumns(10);
-		textField.setBounds(10, 26, 126, 20);
-		contentPane.add(textField);
+		txtFieldNumeroProcesso = new JTextField();
+		txtFieldNumeroProcesso.setEditable(false);
+		txtFieldNumeroProcesso.setText(Integer.toString(1));
+		txtFieldNumeroProcesso.setColumns(10);
+		txtFieldNumeroProcesso.setBounds(10, 26, 126, 20);
+		contentPane.add(txtFieldNumeroProcesso);
 
 		JLabel label = new JLabel("Numero do Processo:");
 		label.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -164,10 +167,15 @@ public class JFrameHome extends JFrame {
 		contentPane.add(label_3);
 
 	}
-	
+	public int obterIdProcesso(){		
+		int id = ((DefaultTableModel) table.getModel()).getRowCount();
+		++id;
+		return id;
+//		JOptionPane.showMessageDialog(null,id);
+	}
 	public Processo criarProcesso() {
 		Processo objProcesso = new Processo();
-		Processo.setContador(0);
+		Processo.setContador(obterIdProcesso());
 		objProcesso.setTempoChegada(Integer.parseInt(txtFieldTempoChegada.getText()));
 		objProcesso.setDuracaoSurto(Integer.parseInt(txtFieldDuracSurto.getText()));
 		objProcesso.setPrioridade(Integer.parseInt(txtFieldPrioridade.getText()));
@@ -186,6 +194,7 @@ public class JFrameHome extends JFrame {
 			((DefaultTableModel) table.getModel()).addRow(fila);	
 	}
 	private void limparCampos() {
+		txtFieldNumeroProcesso.setText(Integer.toString(obterIdProcesso()));
 		txtFieldPrioridade.setText(null);
 		txtFieldDuracSurto.setText(null);
 		txtFieldTempoChegada.setText(null);	
