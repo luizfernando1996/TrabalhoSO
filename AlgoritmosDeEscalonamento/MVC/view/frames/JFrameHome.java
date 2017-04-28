@@ -20,9 +20,8 @@ import controller.processo.Processo;
 
 public class JFrameHome extends JFrame {
 
-	/**
-	 * 
-	 */
+
+	//o atributo abaixo é necessario devido ao frame JFrame
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
