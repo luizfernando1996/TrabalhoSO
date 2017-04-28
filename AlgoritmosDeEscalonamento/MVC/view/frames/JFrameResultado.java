@@ -8,8 +8,6 @@ import javax.swing.border.EmptyBorder;
 
 public class JFrameResultado extends JFrame {
 
-	///A VIDA É MUITO BELA NÉH???<----------APAGA SA PORRA
-
 	/**
 	 * 
 	 */

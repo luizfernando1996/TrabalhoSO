@@ -29,8 +29,6 @@ import javax.swing.JButton;
 public class JAdicionarProcesso extends JFrame {
 
 	
-	//APAGA AQUI TAMBÉM POR FAVOR!!
-	
 	// Attributes
 	private static final long serialVersionUID = 1L;
 
