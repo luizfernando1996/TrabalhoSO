@@ -1,7 +1,7 @@
 1- O botão de run como faço para ele se tornar global??
 	Ele só executa nesta aplicação se for a partir de uma classe que não seja view.
 	
-	
+2- Porque o objeto não passava de uma view para a outra...pq ele não era apresentado na table??
 	
 	Soluções as Duvidas
 // Em Eclipse se fecha a janela...em visual studio isto não
