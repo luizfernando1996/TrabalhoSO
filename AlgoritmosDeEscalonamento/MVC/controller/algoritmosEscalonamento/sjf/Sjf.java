@@ -1,15 +1,15 @@
 package controller.algoritmosEscalonamento.sjf;
 
-import controller.processo.Processo;
+//import controller.processo.Processo;
 
 public class Sjf {
 
 	public int[]array;
 	
-	public Sjf(){
-		Processo objReceber=new Processo();
+//	public Sjf(){
+//		Processo objReceber=new Processo();
 		
-		array=objReceber.fornecerDadosView();
+//		array=objReceber.fornecerDadosView();
 		//array[0]--->Counter of process
-	}
+//	}
 }

@@ -1,7 +1,8 @@
 package view.frames;
 
 import view.frames.JFrameResultado;
-import controller.processo.Processo;
+import controller.algoritmosEscalonamento.roundRobin.FilaDePronto;
+import controller.processo.NodeProcesso;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,12 +18,9 @@ import javax.swing.table.DefaultTableModel;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 import java.awt.Font;
-import javax.swing.JTextArea;
-import javax.swing.JCheckBox;
-import javax.swing.JTextPane;
 
 public class JFrameHome extends JFrame {
 
@@ -36,8 +34,7 @@ public class JFrameHome extends JFrame {
 	private JTextField txtFieldNumeroProcesso;
 	private JTextField txtFieldTempoChegada;
 	private JTextField txtFieldDuracSurto;
-	private JTextField txtFieldQuantum;
-	private JTextField textField;
+	private JTextField txtFieldPrioridade;
 
 	/**
 	 * Launch the application.
@@ -61,16 +58,16 @@ public class JFrameHome extends JFrame {
 	 */
 	public JFrameHome() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 634, 491);
+		setBounds(100, 100, 528, 491);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
 		JButton btnAdicionarProcesso = new JButton("Adicionar Processos");
-		btnAdicionarProcesso.setBounds(128, 64, 129, 23);
+		btnAdicionarProcesso.setBounds(84, 64, 129, 23);
 		btnAdicionarProcesso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Processo process = criarProcesso();
+				NodeProcesso process = criarProcesso();
 				adicionarNaTabela(process);
 				limparCampos();
 			}
@@ -78,7 +75,7 @@ public class JFrameHome extends JFrame {
 
 		// You should to selection a process for be remove
 		JButton btnRemoverProcesso = new JButton("Remover Processo");
-		btnRemoverProcesso.setBounds(279, 64, 129, 23);
+		btnRemoverProcesso.setBounds(223, 64, 129, 23);
 		btnRemoverProcesso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				modelo = (DefaultTableModel) table.getModel();
@@ -128,7 +125,7 @@ public class JFrameHome extends JFrame {
 		contentPane.add(btnTeste);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 109, 565, 283);
+		scrollPane.setBounds(10, 109, 486, 283);
 		contentPane.add(scrollPane);
 
 		modelo = new DefaultTableModel();
@@ -173,34 +170,16 @@ public class JFrameHome extends JFrame {
 		label_2.setBounds(282, 11, 139, 14);
 		contentPane.add(label_2);
 
-		txtFieldQuantum = new JTextField();
-		txtFieldQuantum.setColumns(10);
-		txtFieldQuantum.setBounds(514, 26, 74, 20);
-		contentPane.add(txtFieldQuantum);
+		txtFieldPrioridade = new JTextField();
+		txtFieldPrioridade.setColumns(10);
+		txtFieldPrioridade.setBounds(422, 26, 74, 20);
+		contentPane.add(txtFieldPrioridade);
 
 		JLabel label_3 = new JLabel("Prioridade:");
 		label_3.setFont(new Font("Tahoma", Font.BOLD, 12));
 		label_3.setBounds(422, 11, 74, 14);
 		contentPane.add(label_3);
-		
-		JCheckBox cKRoundRobin = new JCheckBox("Round Robin");
-		cKRoundRobin.setBounds(478, 53, 97, 23);
-		contentPane.add(cKRoundRobin);
-		
-		JCheckBox cKSjf = new JCheckBox("SJF");
-		cKSjf.setBounds(478, 79, 97, 23);
-		contentPane.add(cKSjf);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(418, 26, 74, 20);
-		contentPane.add(textField);
-		
-		JLabel lblQuantum = new JLabel("Quantum:");
-		lblQuantum.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblQuantum.setBounds(514, 12, 74, 14);
-		contentPane.add(lblQuantum);
-		
+
 	}
 
 	public int obterIdProcesso() {
@@ -210,21 +189,21 @@ public class JFrameHome extends JFrame {
 		// JOptionPane.showMessageDialog(null,id);
 	}
 
-	public Processo criarProcesso() {
-		Processo objProcesso = new Processo();
-		Processo.setContador(obterIdProcesso());
+	public NodeProcesso criarProcesso() {
+		NodeProcesso objProcesso = new NodeProcesso();
+		NodeProcesso.setContador(obterIdProcesso());
 		objProcesso.setTempoChegada(Integer.parseInt(txtFieldTempoChegada.getText()));
 		objProcesso.setDuracaoSurto(Integer.parseInt(txtFieldDuracSurto.getText()));
-		objProcesso.setPrioridade(Integer.parseInt(txtFieldQuantum.getText()));
+		objProcesso.setPrioridade(Integer.parseInt(txtFieldPrioridade.getText()));
 		return objProcesso;
 	}
 
-	public void adicionarNaTabela(Processo processo) {
+	public void adicionarNaTabela(NodeProcesso processo) {
 		int numCols = table.getModel().getColumnCount();
 
 		Object[] fila = new Object[numCols];
 
-		fila[0] = Processo.getContador();
+		fila[0] = NodeProcesso.getContador();
 		fila[1] = processo.getTempoChegada();
 		fila[2] = processo.getDuracaoSurto();
 		fila[3] = processo.getPrioridade();
@@ -234,34 +213,23 @@ public class JFrameHome extends JFrame {
 
 	private void limparCampos() {
 		txtFieldNumeroProcesso.setText(Integer.toString(obterIdProcesso()));
-		txtFieldQuantum.setText(null);
+		txtFieldPrioridade.setText(null);
 		txtFieldDuracSurto.setText(null);
 		txtFieldTempoChegada.setText(null);
 	}
 
 	private void obterDadosTabela() {
-
 		// pega o numero de linhas da tabela
 		int quantProcessos = ((DefaultTableModel) table.getModel()).getRowCount();
 
-		// pega toda a tabela e armazena no objeto dtm
-		DefaultTableModel dtm = (DefaultTableModel) table.getModel();
-		// pecorre cada linha da tabela
-
+		FilaDePronto objFilaDePronto=new FilaDePronto();
+		
+		// percorre todas as linhas dos processos
 		for (int i = 0; i < quantProcessos; i++) {
-			Object[] x=obtemVetor(i);
+			Integer[] a = obtemVetor(i);
 			
-			// O comando abaixo é para pegar a linha i da coluna 0
-			// dtm.getValueAt(i,0);
-			// JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 0));
-			// // O comando abaixo é para apresentar na tela
-			// // JOptionPane.showMessageDialog(null, tabela(linha,coluna);
-			 JOptionPane.showMessageDialog(null, x[0]);
-			// JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 2));
-			// JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 3));
-
+			objFilaDePronto.insereLista(a[0],a[1],a[2],a[3]);
 		}
-
 	}
 
 	private void atualizarIdNumeroProcesso() {
@@ -273,40 +241,23 @@ public class JFrameHome extends JFrame {
 
 	}
 
-	private void atualizarTempoChegada() {
-		int numeroLinhas = modelo.getRowCount();
-		for (int i = 0; i < numeroLinhas; i++) {
-			modelo.setValueAt(i + 1, i, 0);
-			// table.getValueAt(i, 0);
-		}
-	}
+	// private void atualizarTempoChegada() {
+	// int numeroLinhas = modelo.getRowCount();
+	// for (int i = 0; i < numeroLinhas; i++) {
+	// modelo.setValueAt(i + 1, i, 0);
+	// // table.getValueAt(i, 0);
+	// }
+	// }
 
-	private Object[] obtemVetor(int i) {
+	// Aqui se obtêm a linha da tabela
+	private Integer[] obtemVetor(int i) {
 		DefaultTableModel dtm = (DefaultTableModel) table.getModel();
-//		 int quantProcessos = ((DefaultTableModel)table.getModel()).getRowCount();
-		 Object[] a = new Object[4];
+		// int quantProcessos =
+		// ((DefaultTableModel)table.getModel()).getRowCount();
+		Integer[] a = new Integer[4];
 		for (int x = 0; x < 4; x++) {
-			a[x] = dtm.getValueAt(i, x);
+			a[x] = Integer.parseInt(dtm.getValueAt(i, x).toString());
 		}
 		return a;
 	}
-	// private void ordena(int [] vetor)
-	// {
-	// int numeroLinhas=modelo.getRowCount();
-	// int[] duracSurtoOrdenado =new int[numeroLinhas];
-	//
-	// for (int i = 0; i < vetor.Length-1; i++)
-	// {
-	// for (int j = i+1; j < vetor.Length; j++)
-	// {
-	// if (vetor[i] > vetor[j])
-	// {
-	// //aqui acontece a troca, ordenação onde o menor é colocado a esquerda
-	// aux = vetor[i];
-	// vetor[i] = vetor[j];
-	// vetor[j] = aux;
-	// }
-	// }
-	// }
-	// }
 }

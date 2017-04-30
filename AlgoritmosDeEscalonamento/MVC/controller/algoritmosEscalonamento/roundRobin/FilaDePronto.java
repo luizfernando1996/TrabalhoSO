@@ -1,14 +1,17 @@
 package controller.algoritmosEscalonamento.roundRobin;
+import controller.processo.NodeProcesso;
 
 public class FilaDePronto {
-	public NodeFila inicio, fim;
+	public NodeProcesso inicio, fim;
+
 	
+
 	public Boolean filaVazia(){		
 		return inicio == null;
 	}
 	
-	public void insereLista(int numeroProcesso, int tempoDeSurto){
-		NodeFila novo = new NodeFila(numeroProcesso, tempoDeSurto, null);
+	public void insereLista(int numeroProcesso,int tempoChegada, int duracaoDoProcesso,int prioridade){
+		NodeProcesso novo = new NodeProcesso(numeroProcesso, tempoChegada, duracaoDoProcesso,prioridade);
 		
 		if(filaVazia()){
 			inicio = novo;
@@ -20,11 +23,11 @@ public class FilaDePronto {
 		}
 	}
 	
-	public int retiraFila(){
-		NodeFila p = inicio;
-		inicio = p.next;
-		return p.tempoDeSurto;
-	}
+//	public int retiraFila(){
+//		NodeFila p = inicio;
+//		inicio = p.next;
+//		return p.tempoDeSurto;
+//	}
 	
 
 }
