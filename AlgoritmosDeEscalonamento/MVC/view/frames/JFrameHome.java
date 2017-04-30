@@ -20,6 +20,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import javax.swing.JTextArea;
+import javax.swing.JCheckBox;
+import javax.swing.JTextPane;
 
 public class JFrameHome extends JFrame {
 
@@ -33,7 +36,8 @@ public class JFrameHome extends JFrame {
 	private JTextField txtFieldNumeroProcesso;
 	private JTextField txtFieldTempoChegada;
 	private JTextField txtFieldDuracSurto;
-	private JTextField txtFieldPrioridade;
+	private JTextField txtFieldQuantum;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -57,13 +61,13 @@ public class JFrameHome extends JFrame {
 	 */
 	public JFrameHome() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 528, 491);
+		setBounds(100, 100, 634, 491);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
 		JButton btnAdicionarProcesso = new JButton("Adicionar Processos");
-		btnAdicionarProcesso.setBounds(84, 64, 129, 23);
+		btnAdicionarProcesso.setBounds(128, 64, 129, 23);
 		btnAdicionarProcesso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Processo process = criarProcesso();
@@ -74,7 +78,7 @@ public class JFrameHome extends JFrame {
 
 		// You should to selection a process for be remove
 		JButton btnRemoverProcesso = new JButton("Remover Processo");
-		btnRemoverProcesso.setBounds(223, 64, 129, 23);
+		btnRemoverProcesso.setBounds(279, 64, 129, 23);
 		btnRemoverProcesso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				modelo = (DefaultTableModel) table.getModel();
@@ -124,7 +128,7 @@ public class JFrameHome extends JFrame {
 		contentPane.add(btnTeste);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 109, 486, 283);
+		scrollPane.setBounds(10, 109, 565, 283);
 		contentPane.add(scrollPane);
 
 		modelo = new DefaultTableModel();
@@ -169,16 +173,34 @@ public class JFrameHome extends JFrame {
 		label_2.setBounds(282, 11, 139, 14);
 		contentPane.add(label_2);
 
-		txtFieldPrioridade = new JTextField();
-		txtFieldPrioridade.setColumns(10);
-		txtFieldPrioridade.setBounds(422, 26, 74, 20);
-		contentPane.add(txtFieldPrioridade);
+		txtFieldQuantum = new JTextField();
+		txtFieldQuantum.setColumns(10);
+		txtFieldQuantum.setBounds(514, 26, 74, 20);
+		contentPane.add(txtFieldQuantum);
 
 		JLabel label_3 = new JLabel("Prioridade:");
 		label_3.setFont(new Font("Tahoma", Font.BOLD, 12));
 		label_3.setBounds(422, 11, 74, 14);
 		contentPane.add(label_3);
-
+		
+		JCheckBox cKRoundRobin = new JCheckBox("Round Robin");
+		cKRoundRobin.setBounds(478, 53, 97, 23);
+		contentPane.add(cKRoundRobin);
+		
+		JCheckBox cKSjf = new JCheckBox("SJF");
+		cKSjf.setBounds(478, 79, 97, 23);
+		contentPane.add(cKSjf);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(418, 26, 74, 20);
+		contentPane.add(textField);
+		
+		JLabel lblQuantum = new JLabel("Quantum:");
+		lblQuantum.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblQuantum.setBounds(514, 12, 74, 14);
+		contentPane.add(lblQuantum);
+		
 	}
 
 	public int obterIdProcesso() {
@@ -193,7 +215,7 @@ public class JFrameHome extends JFrame {
 		Processo.setContador(obterIdProcesso());
 		objProcesso.setTempoChegada(Integer.parseInt(txtFieldTempoChegada.getText()));
 		objProcesso.setDuracaoSurto(Integer.parseInt(txtFieldDuracSurto.getText()));
-		objProcesso.setPrioridade(Integer.parseInt(txtFieldPrioridade.getText()));
+		objProcesso.setPrioridade(Integer.parseInt(txtFieldQuantum.getText()));
 		return objProcesso;
 	}
 
@@ -212,7 +234,7 @@ public class JFrameHome extends JFrame {
 
 	private void limparCampos() {
 		txtFieldNumeroProcesso.setText(Integer.toString(obterIdProcesso()));
-		txtFieldPrioridade.setText(null);
+		txtFieldQuantum.setText(null);
 		txtFieldDuracSurto.setText(null);
 		txtFieldTempoChegada.setText(null);
 	}

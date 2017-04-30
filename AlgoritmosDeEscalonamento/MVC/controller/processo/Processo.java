@@ -6,10 +6,11 @@ public class Processo {
 	// string minusculo ele deseja implementar interface..classe...
 	// deve se digitar String
 
-	private static int contador;
-	private int tempoChegada;
-	private int duracaoSurto;
-	private int prioridade;
+	public static int contador;
+	public int tempoChegada;
+	public int duracaoSurto;
+	public int prioridade;
+	public Processo next;	
 
 	// ctrl+3 and after "ggas"(generate getters and setters) for to encapsulate
 
@@ -44,15 +45,18 @@ public class Processo {
 	public void setPrioridade(int prioridade) {
 		this.prioridade = prioridade;
 	}
-
-	public int[] fornecerDadosView() {
-		int[] vet=new int[4];
-		vet[0]=contador;
-		vet[1]=tempoChegada;
-		vet[2]=duracaoSurto;
-		vet[3]=prioridade;
-		return vet;
-
+	
+	public Processo(int tempoChegada, int duracaoSurto, int prioridade, Processo next){
+		this.next = next;
+		this.tempoChegada = tempoChegada;
+		this.duracaoSurto = duracaoSurto;
+		this.prioridade = prioridade;
 	}
+	
+	public Processo(int tempoChegada, int duracaoSurto, int prioridade){		
+		this.tempoChegada = tempoChegada;
+		this.duracaoSurto = duracaoSurto;
+		this.prioridade = prioridade;
+	}	
 
 }
