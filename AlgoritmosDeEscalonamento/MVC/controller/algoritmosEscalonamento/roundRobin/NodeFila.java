@@ -6,6 +6,8 @@ public class NodeFila {
 	int numeroProcesso;
 	
 	public NodeFila(){
+		//inteiro não pode ser nulo-->coloque o valor 0
+		//tempoDeSurto=0;
 		tempoDeSurto = null;
 		next = null;
 	}
