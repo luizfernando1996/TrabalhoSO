@@ -82,15 +82,10 @@ public class JFrameHome extends JFrame {
 		btnRemoverProcesso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				modelo = (DefaultTableModel) table.getModel();
-				//int linha = table.getSelectedRow();
-				//table.getValueAt(linha, 0);
+				// int linha = table.getSelectedRow();
+				// table.getValueAt(linha, 0);
 				modelo.removeRow(table.getSelectedRow());
-				int numeroLinhas=modelo.getRowCount();
-				for (int i = 0; i <numeroLinhas; i++) {
-					modelo.setValueAt(i+1, i, 0);
-					//table.getValueAt(i, 0);
-				}
-				
+				atualizarIdNumeroProcesso();
 				// decrementa txtFieldNumeroProcesso
 				int num = Integer.parseInt(txtFieldNumeroProcesso.getText());
 				--num;
@@ -249,15 +244,64 @@ public class JFrameHome extends JFrame {
 		// pecorre cada linha da tabela
 
 		for (int i = 0; i < quantProcessos; i++) {
+			Object[] x=obtemVetor(i);
+			
 			// O comando abaixo é para pegar a linha i da coluna 0
 			// dtm.getValueAt(i,0);
-			JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 0));
-			// O comando abaixo é para apresentar na tela
-			// JOptionPane.showMessageDialog(null, tabela(linha,coluna);
-			JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 1));
-			JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 2));
-			JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 3));
+			// JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 0));
+			// // O comando abaixo é para apresentar na tela
+			// // JOptionPane.showMessageDialog(null, tabela(linha,coluna);
+			// JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 1));
+			// JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 2));
+			// JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 3));
+
 		}
 
 	}
+
+	private void atualizarIdNumeroProcesso() {
+		int numeroLinhas = modelo.getRowCount();
+		for (int i = 0; i < numeroLinhas; i++) {
+			modelo.setValueAt(i + 1, i, 0);
+			// table.getValueAt(i, 0);
+		}
+
+	}
+
+	private void atualizarTempoChegada() {
+		int numeroLinhas = modelo.getRowCount();
+		for (int i = 0; i < numeroLinhas; i++) {
+			modelo.setValueAt(i + 1, i, 0);
+			// table.getValueAt(i, 0);
+		}
+	}
+
+	private Object[] obtemVetor(int i) {
+		DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+//		 int quantProcessos = ((DefaultTableModel)table.getModel()).getRowCount();
+		 Object[] a = new Object[4];
+		for (int x = 0; x < 3; x++) {
+			a[x] = dtm.getValueAt(i, x);
+		}
+		return a;
+	}
+	// private void ordena(int [] vetor)
+	// {
+	// int numeroLinhas=modelo.getRowCount();
+	// int[] duracSurtoOrdenado =new int[numeroLinhas];
+	//
+	// for (int i = 0; i < vetor.Length-1; i++)
+	// {
+	// for (int j = i+1; j < vetor.Length; j++)
+	// {
+	// if (vetor[i] > vetor[j])
+	// {
+	// //aqui acontece a troca, ordenação onde o menor é colocado a esquerda
+	// aux = vetor[i];
+	// vetor[i] = vetor[j];
+	// vetor[j] = aux;
+	// }
+	// }
+	// }
+	// }
 }
