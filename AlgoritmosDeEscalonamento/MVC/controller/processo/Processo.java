@@ -46,17 +46,17 @@ public class Processo {
 		this.prioridade = prioridade;
 	}
 	
-	public Processo(int tempoChegada, int duracaoSurto, int prioridade, Processo next){
+	/*public Processo(int tempoChegada, int duracaoSurto, int prioridade, Processo next){
 		this.next = next;
 		this.tempoChegada = tempoChegada;
 		this.duracaoSurto = duracaoSurto;
 		this.prioridade = prioridade;
-	}
+	}*/
 	
-	public Processo(int tempoChegada, int duracaoSurto, int prioridade){		
+	/*public Processo(int tempoChegada, int duracaoSurto, int prioridade){		
 		this.tempoChegada = tempoChegada;
 		this.duracaoSurto = duracaoSurto;
 		this.prioridade = prioridade;
-	}	
+	}	*/
 
 }

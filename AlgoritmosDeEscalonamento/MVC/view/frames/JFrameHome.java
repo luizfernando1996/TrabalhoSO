@@ -114,6 +114,11 @@ public class JFrameHome extends JFrame {
 		});
 
 		JButton btnTeste = new JButton("TESTE");
+		btnTeste.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				obterDadosTabela();
+			}
+		});
 		btnTeste.setBounds(374, 403, 89, 23);
 		contentPane.setLayout(null);
 		contentPane.add(btnAdicionarProcesso);
@@ -251,7 +256,7 @@ public class JFrameHome extends JFrame {
 			// JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 0));
 			// // O comando abaixo é para apresentar na tela
 			// // JOptionPane.showMessageDialog(null, tabela(linha,coluna);
-			// JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 1));
+			 JOptionPane.showMessageDialog(null, x[0]);
 			// JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 2));
 			// JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 3));
 
@@ -280,7 +285,7 @@ public class JFrameHome extends JFrame {
 		DefaultTableModel dtm = (DefaultTableModel) table.getModel();
 //		 int quantProcessos = ((DefaultTableModel)table.getModel()).getRowCount();
 		 Object[] a = new Object[4];
-		for (int x = 0; x < 3; x++) {
+		for (int x = 0; x < 4; x++) {
 			a[x] = dtm.getValueAt(i, x);
 		}
 		return a;
