@@ -78,7 +78,19 @@ public class JFrameHome extends JFrame {
 		btnRemoverProcesso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				modelo = (DefaultTableModel) table.getModel();
+				//int linha = table.getSelectedRow();
+				//table.getValueAt(linha, 0);
 				modelo.removeRow(table.getSelectedRow());
+				int numeroLinhas=modelo.getRowCount();
+				for (int i = 0; i <numeroLinhas; i++) {
+					modelo.setValueAt(i+1, i, 0);
+					//table.getValueAt(i, 0);
+				}
+				
+				// decrementa txtFieldNumeroProcesso
+				int num = Integer.parseInt(txtFieldNumeroProcesso.getText());
+				--num;
+				txtFieldNumeroProcesso.setText(Integer.toString(num));
 			}
 		});
 
@@ -166,15 +178,6 @@ public class JFrameHome extends JFrame {
 		label_3.setFont(new Font("Tahoma", Font.BOLD, 12));
 		label_3.setBounds(422, 11, 74, 14);
 		contentPane.add(label_3);
-		
-		JButton btnObterDadosTabela = new JButton("Obter Dados tabela");
-		btnObterDadosTabela.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				obterDadosTabela();
-				}
-		});
-		btnObterDadosTabela.setBounds(374, 64, 89, 23);
-		contentPane.add(btnObterDadosTabela);
 
 	}
 
@@ -214,25 +217,25 @@ public class JFrameHome extends JFrame {
 		txtFieldTempoChegada.setText(null);
 	}
 
-	private void obterDadosTabela(){
-		
-		//pega o numero de linhas da tabela
-		int quantProcessos=((DefaultTableModel) table.getModel()).getRowCount();
-		
-		//pega toda a tabela e armazena no objeto dtm
-		DefaultTableModel dtm = (DefaultTableModel)table.getModel();
-		//pecorre cada linha da tabela
-		
+	private void obterDadosTabela() {
+
+		// pega o numero de linhas da tabela
+		int quantProcessos = ((DefaultTableModel) table.getModel()).getRowCount();
+
+		// pega toda a tabela e armazena no objeto dtm
+		DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+		// pecorre cada linha da tabela
+
 		for (int i = 0; i < quantProcessos; i++) {
-			//O comando abaixo é para pegar a linha i da coluna 0
-			//dtm.getValueAt(i,0);
-			JOptionPane.showMessageDialog(null,dtm.getValueAt(i,0));
-			//O comando abaixo é para apresentar na tela
-			//JOptionPane.showMessageDialog(null, tabela(linha,coluna);
-			JOptionPane.showMessageDialog(null,dtm.getValueAt(i,1));
-			JOptionPane.showMessageDialog(null,dtm.getValueAt(i,2));
-			JOptionPane.showMessageDialog(null,dtm.getValueAt(i,3));
+			// O comando abaixo é para pegar a linha i da coluna 0
+			// dtm.getValueAt(i,0);
+			JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 0));
+			// O comando abaixo é para apresentar na tela
+			// JOptionPane.showMessageDialog(null, tabela(linha,coluna);
+			JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 1));
+			JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 2));
+			JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 3));
 		}
-		
+
 	}
 }

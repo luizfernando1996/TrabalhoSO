@@ -8,7 +8,7 @@ public class NodeFila {
 	public NodeFila(){
 		//inteiro não pode ser nulo-->coloque o valor 0
 		//tempoDeSurto=0;
-		tempoDeSurto = null;
+		//tempoDeSurto = null;
 		next = null;
 	}
 	
