@@ -1,8 +1,8 @@
 package view.frames;
 
 import view.frames.JFrameResultado;
-import controller.algoritmosEscalonamento.roundRobin.FilaDePronto;
 import controller.processo.NodeProcesso;
+import controller.processo.algoritmosEscalonamento.roundRobin.FilaDePronto;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

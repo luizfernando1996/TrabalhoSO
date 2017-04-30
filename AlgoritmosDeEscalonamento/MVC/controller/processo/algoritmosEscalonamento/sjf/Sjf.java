@@ -1,4 +1,4 @@
-package controller.algoritmosEscalonamento.sjf;
+package controller.processo.algoritmosEscalonamento.sjf;
 
 //import controller.processo.Processo;
 
