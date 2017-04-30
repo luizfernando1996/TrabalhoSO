@@ -215,11 +215,14 @@ public class JFrameHome extends JFrame {
 	}
 
 	private void obterDadosTabela(){
+		
 		//pega o numero de linhas da tabela
 		int quantProcessos=((DefaultTableModel) table.getModel()).getRowCount();
+		
 		//pega toda a tabela e armazena no objeto dtm
 		DefaultTableModel dtm = (DefaultTableModel)table.getModel();
 		//pecorre cada linha da tabela
+		
 		for (int i = 0; i < quantProcessos; i++) {
 			//O comando abaixo é para pegar a linha i da coluna 0
 			//dtm.getValueAt(i,0);
@@ -230,9 +233,6 @@ public class JFrameHome extends JFrame {
 			JOptionPane.showMessageDialog(null,dtm.getValueAt(i,2));
 			JOptionPane.showMessageDialog(null,dtm.getValueAt(i,3));
 		}
-
-
-//Agora é contigo...
-//		processo
+		
 	}
 }
