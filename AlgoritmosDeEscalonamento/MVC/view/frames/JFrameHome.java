@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
-//import javax.swing.JOptionPane;
+import javax.swing.JOptionPane;
 
 import java.awt.Font;
 
@@ -66,7 +66,7 @@ public class JFrameHome extends JFrame {
 		btnAdicionarProcesso.setBounds(84, 64, 129, 23);
 		btnAdicionarProcesso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Processo process=criarProcesso();
+				Processo process = criarProcesso();
 				adicionarNaTabela(process);
 				limparCampos();
 			}
@@ -166,14 +166,25 @@ public class JFrameHome extends JFrame {
 		label_3.setFont(new Font("Tahoma", Font.BOLD, 12));
 		label_3.setBounds(422, 11, 74, 14);
 		contentPane.add(label_3);
+		
+		JButton btnObterDadosTabela = new JButton("Obter Dados tabela");
+		btnObterDadosTabela.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				obterDadosTabela();
+				}
+		});
+		btnObterDadosTabela.setBounds(374, 64, 89, 23);
+		contentPane.add(btnObterDadosTabela);
 
 	}
-	public int obterIdProcesso(){		
+
+	public int obterIdProcesso() {
 		int id = ((DefaultTableModel) table.getModel()).getRowCount();
 		++id;
 		return id;
-//		JOptionPane.showMessageDialog(null,id);
+		// JOptionPane.showMessageDialog(null,id);
 	}
+
 	public Processo criarProcesso() {
 		Processo objProcesso = new Processo();
 		Processo.setContador(obterIdProcesso());
@@ -182,27 +193,46 @@ public class JFrameHome extends JFrame {
 		objProcesso.setPrioridade(Integer.parseInt(txtFieldPrioridade.getText()));
 		return objProcesso;
 	}
-	public void adicionarNaTabela(Processo processo) {	
-			int numCols = table.getModel().getColumnCount();
-			
-			Object[] fila = new Object[numCols];
 
-			fila[0] = Processo.getContador();
-			fila[1] = processo.getTempoChegada();
-			fila[2] = processo.getDuracaoSurto();
-			fila[3] = processo.getPrioridade();
+	public void adicionarNaTabela(Processo processo) {
+		int numCols = table.getModel().getColumnCount();
 
-			((DefaultTableModel) table.getModel()).addRow(fila);	
+		Object[] fila = new Object[numCols];
+
+		fila[0] = Processo.getContador();
+		fila[1] = processo.getTempoChegada();
+		fila[2] = processo.getDuracaoSurto();
+		fila[3] = processo.getPrioridade();
+
+		((DefaultTableModel) table.getModel()).addRow(fila);
 	}
+
 	private void limparCampos() {
 		txtFieldNumeroProcesso.setText(Integer.toString(obterIdProcesso()));
 		txtFieldPrioridade.setText(null);
 		txtFieldDuracSurto.setText(null);
-		txtFieldTempoChegada.setText(null);	
+		txtFieldTempoChegada.setText(null);
 	}
+
 	private void obterDadosTabela(){
-		int quantProcessos=((DefaultTableModel) table.getModel()).getRowCount();	
-		//Agora é contigo...
+		//pega o numero de linhas da tabela
+		int quantProcessos=((DefaultTableModel) table.getModel()).getRowCount();
+		//pega toda a tabela e armazena no objeto dtm
+		DefaultTableModel dtm = (DefaultTableModel)table.getModel();
+		//pecorre cada linha da tabela
+		for (int i = 0; i < quantProcessos; i++) {
+			//O comando abaixo é para pegar a linha i da coluna 0
+			//dtm.getValueAt(i,0);
+			JOptionPane.showMessageDialog(null,dtm.getValueAt(i,0));
+			//O comando abaixo é para apresentar na tela
+			//JOptionPane.showMessageDialog(null, tabela(linha,coluna);
+			JOptionPane.showMessageDialog(null,dtm.getValueAt(i,1));
+			JOptionPane.showMessageDialog(null,dtm.getValueAt(i,2));
+			JOptionPane.showMessageDialog(null,dtm.getValueAt(i,3));
+		}
+
+
+//Agora é contigo...
 //		processo
 	}
 }
