@@ -265,7 +265,7 @@ public class JFrameHome extends JFrame {
 		return a;
 	}
 
-	private void atualizarTempoChegada() {
+	/*private void atualizarTempoChegada() {
 		int numeroLinhas = modelo.getRowCount();
 		int[] vetor = new int[numeroLinhas];
 		for (int i = 0; i < numeroLinhas; i++) {
@@ -301,6 +301,6 @@ public class JFrameHome extends JFrame {
 				if(vetor[indiceVetOrdenado]==tempoChegadaTabela){}
 					
 		}
-	}
+	}*/
 
 }

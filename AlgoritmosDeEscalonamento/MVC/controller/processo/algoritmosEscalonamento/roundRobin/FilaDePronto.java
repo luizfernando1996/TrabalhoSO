@@ -23,10 +23,10 @@ public class FilaDePronto {
 		}
 	}
 	
-//	public int retiraFila(){
-//		NodeFila p = inicio;
+//	public int retiraFila() {
+//		NodeProcesso p = inicio;
 //		inicio = p.next;
-//		return p.tempoDeSurto;
+//		return p.duracaoSurto;
 //	}
 	
 
