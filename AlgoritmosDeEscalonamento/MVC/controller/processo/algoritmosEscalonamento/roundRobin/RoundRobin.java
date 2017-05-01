@@ -1,4 +1,4 @@
-package controller.algoritmosEscalonamento.roundRobin;
+package controller.processo.algoritmosEscalonamento.roundRobin;
 
 public class RoundRobin {
 
