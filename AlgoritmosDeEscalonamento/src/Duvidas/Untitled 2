@@ -3,34 +3,17 @@
 	
 2- Porque o objeto não passava de uma view para a outra...pq ele não era apresentado na table??
 	
-	Soluções as Duvidas
+	Soluções das Duvidas
 // Em Eclipse se fecha a janela...em visual studio isto não
 // existe porque o direcionamento do codigo ja vai para outro
-// lugar
+// lugar devido as threads
 // JFrameHome.this.dispose();
+//No eclipse quando o codigo da errado se executa classes de proteção do java e a execução ocorre la.
 
 
-
-
+3- vetor de objetos em java-Como declarar?
 
 //_-------------------------------------------------métodos necessarios------------------------------------------
-	// private void ordena(int [] vetor)
-	// { // int numeroLinhas=modelo.getRowCount();
-	// int[] duracSurtoOrdenado =new int[numeroLinhas];
-	//
-	// for (int i = 0; i < vetor.Length-1; i++)
-	// {
-	// for (int j = i+1; j < vetor.Length; j++)
-	// {
-	// if (vetor[i] > vetor[j])
-	// {
-	// //aqui acontece a troca, ordenação onde o menor é colocado a esquerda
-	// aux = vetor[i];
-	// vetor[i] = vetor[j];
-	// vetor[j] = aux;
-	// }
-	// }
-	// }
-	// }
+
 	//_-------------------------------------------------métodos necessarios------------------------------------------
 	
