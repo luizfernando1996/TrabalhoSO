@@ -247,9 +247,10 @@ public class JFrameHome extends JFrame {
 		// pega toda a tabela e armazena no objeto dtm
 		DefaultTableModel dtm = (DefaultTableModel) table.getModel();
 		// pecorre cada linha da tabela
-
+		Processo[] vetor = new Processo[quantProcessos]; 
+	
 		for (int i = 0; i < quantProcessos; i++) {
-			Object[] x=obtemVetor(i);
+			Object[] x = obtemVetor(i);
 			
 			// O comando abaixo é para pegar a linha i da coluna 0
 			// dtm.getValueAt(i,0);
@@ -261,6 +262,8 @@ public class JFrameHome extends JFrame {
 			// JOptionPane.showMessageDialog(null, dtm.getValueAt(i, 3));
 
 		}
+		
+		
 
 	}
 
@@ -282,8 +285,8 @@ public class JFrameHome extends JFrame {
 	}
 
 	private Object[] obtemVetor(int i) {
-		DefaultTableModel dtm = (DefaultTableModel) table.getModel();
-//		 int quantProcessos = ((DefaultTableModel)table.getModel()).getRowCount();
+		 int quantProcessos = ((DefaultTableModel)table.getModel()).getRowCount();
+		 DefaultTableModel dtm = (DefaultTableModel) table.getModel();	
 		 Object[] a = new Object[4];
 		for (int x = 0; x < 4; x++) {
 			a[x] = dtm.getValueAt(i, x);
