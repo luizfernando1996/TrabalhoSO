@@ -3,6 +3,7 @@ package view.frames;
 import view.frames.JFrameResultado;
 import controller.processo.NodeProcesso;
 import controller.processo.algoritmosEscalonamento.roundRobin.FilaDePronto;
+import controller.processo.algoritmosEscalonamento.roundRobin.RoundRobin;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,12 +16,14 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import controller.processo.algoritmosEscalonamento.roundRobin.RoundRobin;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 //import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import javax.swing.JCheckBox;
 
 public class JFrameHome extends JFrame {
 
@@ -35,6 +38,7 @@ public class JFrameHome extends JFrame {
 	private JTextField txtFieldTempoChegada;
 	private JTextField txtFieldDuracSurto;
 	private JTextField txtFieldPrioridade;
+	private JTextField txtFieldQuantum;
 
 	/**
 	 * Launch the application.
@@ -58,7 +62,7 @@ public class JFrameHome extends JFrame {
 	 */
 	public JFrameHome() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 528, 491);
+		setBounds(100, 100, 633, 491);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -125,7 +129,7 @@ public class JFrameHome extends JFrame {
 		contentPane.add(btnTeste);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 109, 486, 283);
+		scrollPane.setBounds(74, 109, 486, 283);
 		contentPane.add(scrollPane);
 
 		modelo = new DefaultTableModel();
@@ -179,6 +183,30 @@ public class JFrameHome extends JFrame {
 		label_3.setFont(new Font("Tahoma", Font.BOLD, 12));
 		label_3.setBounds(422, 11, 74, 14);
 		contentPane.add(label_3);
+		
+		JLabel lblQuantum = new JLabel("Quantum");
+		lblQuantum.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblQuantum.setBounds(506, 11, 74, 14);
+		contentPane.add(lblQuantum);
+		
+		txtFieldQuantum = new JTextField();
+		RoundRobin objQuantum; 
+		txtFieldQuantum.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 objQuantum= new RoundRobin(Integer.parseInt(txtFieldQuantum.getText()));
+			}
+		});
+		txtFieldQuantum.setColumns(10);
+		txtFieldQuantum.setBounds(506, 26, 74, 20);
+		contentPane.add(txtFieldQuantum);
+		
+		JCheckBox chckbxRoundRobin = new JCheckBox("Round Robin");
+		chckbxRoundRobin.setBounds(439, 64, 97, 23);
+		contentPane.add(chckbxRoundRobin);
+		
+		JCheckBox chckbxSjf = new JCheckBox("SJF");
+		chckbxSjf.setBounds(547, 64, 50, 23);
+		contentPane.add(chckbxSjf);
 
 	}
 
@@ -301,6 +329,10 @@ public class JFrameHome extends JFrame {
 				if(vetor[indiceVetOrdenado]==tempoChegadaTabela){}
 					
 		}
+<<<<<<< HEAD
 	}*/
 
+=======
+	}
+>>>>>>> branch 'master' of https://github.com/luizfernando1996/TrabalhoSO.git
 }
