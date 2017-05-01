@@ -3,6 +3,7 @@ package controller.processo.algoritmosEscalonamento.roundRobin;
 public class RoundRobin {
 
 	public int quantum;
+	
 	FilaDePronto fila = new FilaDePronto();
 	
 	public RoundRobin(int quantum){
