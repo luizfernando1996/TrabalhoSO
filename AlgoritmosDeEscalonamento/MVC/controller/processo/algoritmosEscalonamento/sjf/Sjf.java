@@ -10,6 +10,6 @@ public class Sjf {
 //		Processo objReceber=new Processo();
 		
 //		array=objReceber.fornecerDadosView();
-		//array[0]--->Counter of process
+//array[0]--->Counter of process
 //	}
 }

@@ -16,7 +16,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import controller.processo.algoritmosEscalonamento.roundRobin.RoundRobin;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -188,18 +187,12 @@ public class JFrameHome extends JFrame {
 		lblQuantum.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblQuantum.setBounds(506, 11, 74, 14);
 		contentPane.add(lblQuantum);
-		
-		/*txtFieldQuantum = new JTextField();
-		RoundRobin objQuantum; 
-		txtFieldQuantum.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				 objQuantum= new RoundRobin(Integer.parseInt(txtFieldQuantum.getText()));
-			}
-		});*/
-//		txtFieldQuantum.setColumns(10);
-//		txtFieldQuantum.setBounds(506, 26, 74, 20);
-//		contentPane.add(txtFieldQuantum);
-		
+
+		txtFieldQuantum = new JTextField();
+		 txtFieldQuantum.setColumns(10);
+		 txtFieldQuantum.setBounds(506, 26, 74, 20);
+			contentPane.add(txtFieldQuantum);
+
 		JCheckBox chckbxRoundRobin = new JCheckBox("Round Robin");
 		chckbxRoundRobin.setBounds(439, 64, 97, 23);
 		contentPane.add(chckbxRoundRobin);
@@ -215,7 +208,7 @@ public class JFrameHome extends JFrame {
 		++id;
 		return id;
 		// JOptionPane.showMessageDialog(null,id);
-	}	
+	}
 
 	public NodeProcesso criarProcesso() {
 		NodeProcesso objProcesso = new NodeProcesso();
@@ -254,14 +247,15 @@ public class JFrameHome extends JFrame {
 		FilaDePronto objFilaDePronto = new FilaDePronto();
 
 		// percorre todas as linhas dos processos
- 
+
 		for (int i = 0; i < quantProcessos; i++) {
 			Integer[] a = obterColunasProcesso(i);
 
 			objFilaDePronto.InserirProcessoOrdenado(a[0], a[1], a[2], a[3]);
 		}
+		 RoundRobin objQuantum = new RoundRobin(Integer.parseInt(txtFieldQuantum.getText()));
 	}
-		
+
 	private void atualizarIdNumeroProcesso() {
 		int numeroLinhas = modelo.getRowCount();
 		for (int i = 0; i < numeroLinhas; i++) {
@@ -279,7 +273,6 @@ public class JFrameHome extends JFrame {
 	// }
 	// }
 
-
 	// Aqui se obtêm a linha da tabela
 	private Integer[] obterColunasProcesso(int i) {
 
@@ -293,45 +286,29 @@ public class JFrameHome extends JFrame {
 		return a;
 	}
 
-	/*private void atualizarTempoChegada() {
-		int numeroLinhas = modelo.getRowCount();
-		int[] vetor = new int[numeroLinhas];
-		for (int i = 0; i < numeroLinhas; i++) {
-			vetor[i] = Integer.parseInt(table.getValueAt(i, 1).toString());
-		}
-		ordenaTempoDeChegada(vetor);
-	}
+	/*
+	 * private void atualizarTempoChegada() { int numeroLinhas =
+	 * modelo.getRowCount(); int[] vetor = new int[numeroLinhas]; for (int i =
+	 * 0; i < numeroLinhas; i++) { vetor[i] =
+	 * Integer.parseInt(table.getValueAt(i, 1).toString()); }
+	 * ordenaTempoDeChegada(vetor); }
+	 * 
+	 * private int[] ordenaTempoDeChegada(int[] vetor) { // int //
+	 * numeroLinhas=modelo.getRowCount(); int aux; for (int i = 0; i <
+	 * vetor.length - 1; i++) { for (int j = i + 1; j < vetor.length; j++) { if
+	 * (vetor[i] > vetor[j]) { // aqui acontece a troca, ordenação onde o menor
+	 * é colocado // a esquerda aux = vetor[i]; vetor[i] = vetor[j]; vetor[j] =
+	 * aux; } } } return vetor; }
+	 * 
+	 * private void ordenaTabelaDeProcessos(int[] vetor) { int numeroLinhas =
+	 * modelo.getRowCount(); int indiceVetOrdenado=0; for (int i = 0; i
+	 * <numeroLinhas; i++) {
+	 * 
+	 * int tempoChegadaTabela=Integer.parseInt(table.getValueAt(i,
+	 * 1).toString()); //O vetor foi ordenado por tempo de chegada
+	 * if(vetor[indiceVetOrdenado]==tempoChegadaTabela){}
+	 * 
+	 * } <<<<<<< HEAD }
+	 */
 
-	private int[] ordenaTempoDeChegada(int[] vetor) { // int
-														// numeroLinhas=modelo.getRowCount();
-		int aux;
-		for (int i = 0; i < vetor.length - 1; i++) {
-			for (int j = i + 1; j < vetor.length; j++) {
-				if (vetor[i] > vetor[j]) {
-					// aqui acontece a troca, ordenação onde o menor é colocado
-					// a esquerda
-					aux = vetor[i];
-					vetor[i] = vetor[j];
-					vetor[j] = aux;
-				}
-			}
-		}
-		return vetor;
-	}
-
-	private void ordenaTabelaDeProcessos(int[] vetor) {
-		int numeroLinhas = modelo.getRowCount();
-		int indiceVetOrdenado=0;
-		for (int i = 0; i <numeroLinhas; i++) {
-			
-			int tempoChegadaTabela=Integer.parseInt(table.getValueAt(i, 1).toString());
-			//O vetor foi ordenado por tempo de chegada
-				if(vetor[indiceVetOrdenado]==tempoChegadaTabela){}
-					
-		}
-<<<<<<< HEAD
-	}*/
-
-
-	}
-
+}

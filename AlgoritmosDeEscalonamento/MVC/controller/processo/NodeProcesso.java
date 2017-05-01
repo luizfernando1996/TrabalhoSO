@@ -19,8 +19,7 @@ public class NodeProcesso{
 	
 	public NodeProcesso(){}
 	
-	public NodeProcesso(int numeroProcesso,int tempoChegada, int duracaoDoProcesso,int prioridade) {
-		
+	public NodeProcesso(int numeroProcesso,int tempoChegada, int duracaoDoProcesso,int prioridade) {		
 		this.contadorObjeto=numeroProcesso;
 		this.tempoChegada=tempoChegada;
 		this.duracaoSurto=duracaoDoProcesso;

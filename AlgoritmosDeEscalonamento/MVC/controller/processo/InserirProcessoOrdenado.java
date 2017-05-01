@@ -1,6 +1,6 @@
 //package controller.processo;
 //
-//public class InserirProcessoOrdenado {
+//public class InserirProcessoOrdenado() {
 //	NodeProcesso novo = new NodeProcesso(valor);
 //	NodeProcesso ant=null;
 //	NodeProcesso p=this.inicio;
