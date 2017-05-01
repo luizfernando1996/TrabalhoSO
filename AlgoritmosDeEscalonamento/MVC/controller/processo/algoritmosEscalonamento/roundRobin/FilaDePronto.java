@@ -27,7 +27,9 @@ public class FilaDePronto {
 		inicio = novo;
 	}
 	else{
+		//novo.next aponta para o proximo
 		novo.next=ant.next;
+		//anterior agora aponta para o objeto
 		ant.next=novo;
 	}
 	
