@@ -8,20 +8,8 @@ public class FilaDePronto {
 
 	public Boolean filaVazia(){		
 		return inicio == null;
-	}
-	
-//	public void insereLista(int numeroProcesso,int tempoChegada, int duracaoDoProcesso,int prioridade){
-//		NodeProcesso novo = new NodeProcesso(numeroProcesso, tempoChegada, duracaoDoProcesso,prioridade);
-//		
-//		if(filaVazia()){
-//			inicio = novo;
-//			fim = novo;
-//		}
-//		else{			
-//			fim.next = novo;
-//			fim = novo;
-//		}
-//	}
+	}	
+
 	
 	public void InserirProcessoOrdenado(int numeroProcesso,int tempoChegada, int duracaoDoProcesso,int prioridade) {
 		NodeProcesso novo = new NodeProcesso(numeroProcesso, tempoChegada, duracaoDoProcesso,prioridade);
@@ -42,7 +30,12 @@ public class FilaDePronto {
 		novo.next=ant.next;
 		ant.next=novo;
 	}
-
+	
+	p = inicio;
+	while(p.next!= null){		
+		p = p.next;
+		}
+	fim = p;
 }
 	
 //	public int retiraFila() {
