@@ -246,7 +246,6 @@ public class JFrameHome extends JFrame {
 
 		int quantProcessos = ((DefaultTableModel) table.getModel()).getRowCount();
 
-		FilaDePronto objFilaDePronto = new FilaDePronto();
 		ListaTempoChegada objLista=new ListaTempoChegada();
 		// percorre todas as linhas dos processos
 
