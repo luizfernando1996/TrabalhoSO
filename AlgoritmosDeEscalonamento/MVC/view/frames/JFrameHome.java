@@ -189,16 +189,16 @@ public class JFrameHome extends JFrame {
 		lblQuantum.setBounds(506, 11, 74, 14);
 		contentPane.add(lblQuantum);
 		
-		txtFieldQuantum = new JTextField();
+		/*txtFieldQuantum = new JTextField();
 		RoundRobin objQuantum; 
 		txtFieldQuantum.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 objQuantum= new RoundRobin(Integer.parseInt(txtFieldQuantum.getText()));
 			}
-		});
-		txtFieldQuantum.setColumns(10);
-		txtFieldQuantum.setBounds(506, 26, 74, 20);
-		contentPane.add(txtFieldQuantum);
+		});*/
+//		txtFieldQuantum.setColumns(10);
+//		txtFieldQuantum.setBounds(506, 26, 74, 20);
+//		contentPane.add(txtFieldQuantum);
 		
 		JCheckBox chckbxRoundRobin = new JCheckBox("Round Robin");
 		chckbxRoundRobin.setBounds(439, 64, 97, 23);
@@ -258,7 +258,7 @@ public class JFrameHome extends JFrame {
 		for (int i = 0; i < quantProcessos; i++) {
 			Integer[] a = obterColunasProcesso(i);
 
-			objFilaDePronto.insereLista(a[0], a[1], a[2], a[3]);
+			objFilaDePronto.InserirProcessoOrdenado(a[0], a[1], a[2], a[3]);
 		}
 	}
 		
@@ -332,7 +332,6 @@ public class JFrameHome extends JFrame {
 <<<<<<< HEAD
 	}*/
 
-=======
+
 	}
->>>>>>> branch 'master' of https://github.com/luizfernando1996/TrabalhoSO.git
-}
+
