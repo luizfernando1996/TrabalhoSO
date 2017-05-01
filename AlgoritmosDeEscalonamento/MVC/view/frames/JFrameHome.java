@@ -286,7 +286,7 @@ public class JFrameHome extends JFrame {
 			
 			int tempoChegadaTabela=Integer.parseInt(table.getValueAt(i, 1).toString());
 			//O vetor foi ordenado por tempo de chegada
-				if(vetor[indiceVetOrdenado]==tempoChegadaTabela)
+				if(vetor[indiceVetOrdenado]==tempoChegadaTabela){}
 					
 		}
 	}
