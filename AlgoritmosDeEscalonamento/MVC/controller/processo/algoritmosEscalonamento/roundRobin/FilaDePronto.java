@@ -15,8 +15,8 @@ public class FilaDePronto {
 		NodeProcesso novo = new NodeProcesso(numeroProcesso, tempoChegada, duracaoDoProcesso,prioridade);
 	NodeProcesso ant = null;
 	NodeProcesso p = inicio;
-	
-	while(p!=null && p.getTempoChegada()< tempoChegada)
+
+	while(p!=null && p.getTempoChegada()<= tempoChegada)
 	{
 		ant=p;
 		p=p.next;
@@ -38,11 +38,11 @@ public class FilaDePronto {
 	fim = p;
 }
 	
-//	public int retiraFila() {
-//		NodeProcesso p = inicio;
-//		inicio = p.next;
-//		return p.duracaoSurto;
-//	}
+	public int retiraFila() {
+		NodeProcesso p = inicio;
+		inicio = p.next;
+		return p.getDuracaoSurto();
+	}
 	
 
 }
