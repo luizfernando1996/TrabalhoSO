@@ -12,14 +12,12 @@ public class NodeProcesso {
 	private int contadorObjeto;
 	private int tempoChegada;
 	private int duracaoSurto;
-	private int prioridade;
 	public NodeProcesso next;
 
 	public NodeProcesso() {
 		contadorObjeto = 0;
 		tempoChegada = 0;
 		duracaoSurto = 0;
-		prioridade = 0;
 		next = null;
 	}
 
@@ -27,7 +25,6 @@ public class NodeProcesso {
 		this.contadorObjeto = numeroProcesso;
 		this.tempoChegada = tempoChegada;
 		this.duracaoSurto = duracaoDoProcesso;
-		this.prioridade = prioridade;
 		// this.tempoDeSurto = tempoDeSurto;
 		this.next = null;
 		// this.numeroProcesso = numeroProcesso;
@@ -68,13 +65,5 @@ public class NodeProcesso {
 
 	public void setDuracaoSurto(int duracaoSurto) {
 		this.duracaoSurto = duracaoSurto;
-	}
-
-	public int getPrioridade() {
-		return prioridade;
-	}
-
-	public void setPrioridade(int prioridade) {
-		this.prioridade = prioridade;
 	}
 }

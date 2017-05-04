@@ -9,7 +9,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import controller.processo.algoritmosEscalonamento.sjf.Sjf;
 import controller.processo.algoritmosEscalonamento.sjf.NodeResultadoSjf;
 import javax.swing.JTextArea;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 public class JFrameResultado extends JFrame {
