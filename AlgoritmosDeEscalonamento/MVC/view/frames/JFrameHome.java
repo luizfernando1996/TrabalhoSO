@@ -3,7 +3,6 @@ package view.frames;
 import view.frames.JFrameResultado;
 import controller.processo.ListaTempoChegada;
 import controller.processo.NodeProcesso;
-import controller.processo.algoritmosEscalonamento.roundRobin.FilaDePronto;
 import controller.processo.algoritmosEscalonamento.roundRobin.RoundRobin;
 import controller.processo.algoritmosEscalonamento.sjf.Sjf;
 
@@ -40,6 +39,8 @@ public class JFrameHome extends JFrame {
 	private JTextField txtFieldDuracSurto;
 	private JTextField txtFieldPrioridade;
 	private JTextField txtFieldQuantum;
+	private int chaveCheckBoxRoundRobin = 0;
+	private int chaveCheckBoxSjf = 0;
 
 	/**
 	 * Launch the application.
@@ -115,19 +116,11 @@ public class JFrameHome extends JFrame {
 			}
 		});
 
-		JButton btnTeste = new JButton("TESTE");
-		btnTeste.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				obterDadosTabela();
-			}
-		});
-		btnTeste.setBounds(374, 403, 89, 23);
 		contentPane.setLayout(null);
 		contentPane.add(btnAdicionarProcesso);
 		contentPane.add(btnRemoverProcesso);
 		contentPane.add(btnLimparTudo);
 		contentPane.add(btnNewButton);
-		contentPane.add(btnTeste);
 
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(74, 109, 486, 283);
@@ -184,22 +177,39 @@ public class JFrameHome extends JFrame {
 		label_3.setFont(new Font("Tahoma", Font.BOLD, 12));
 		label_3.setBounds(422, 11, 74, 14);
 		contentPane.add(label_3);
-		
+
 		JLabel lblQuantum = new JLabel("Quantum");
 		lblQuantum.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblQuantum.setBounds(506, 11, 74, 14);
 		contentPane.add(lblQuantum);
 
 		txtFieldQuantum = new JTextField();
-		 txtFieldQuantum.setColumns(10);
-		 txtFieldQuantum.setBounds(506, 26, 74, 20);
-			contentPane.add(txtFieldQuantum);
+		txtFieldQuantum.setColumns(10);
+		txtFieldQuantum.setBounds(506, 26, 74, 20);
+		contentPane.add(txtFieldQuantum);
 
-		JCheckBox chckbxRoundRobin = new JCheckBox("Round Robin");
+		JCheckBox chckbxRoundRobin = new JCheckBox("Round Robin", false);
+		chckbxRoundRobin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (chckbxRoundRobin.isSelected())
+					chaveCheckBoxRoundRobin = 1;
+				else
+					chaveCheckBoxRoundRobin = 0;
+			}
+		});
 		chckbxRoundRobin.setBounds(439, 64, 97, 23);
 		contentPane.add(chckbxRoundRobin);
-		
-		JCheckBox chckbxSjf = new JCheckBox("SJF");
+
+		JCheckBox chckbxSjf = new JCheckBox("SJF", false);
+		chckbxSjf.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (chckbxSjf.isSelected())
+					chaveCheckBoxSjf = 1;
+				else
+					chaveCheckBoxSjf = 0;
+
+			}
+		});
 		chckbxSjf.setBounds(547, 64, 50, 23);
 		contentPane.add(chckbxSjf);
 
@@ -246,16 +256,23 @@ public class JFrameHome extends JFrame {
 
 		int quantProcessos = ((DefaultTableModel) table.getModel()).getRowCount();
 
-		ListaTempoChegada objLista=new ListaTempoChegada();
+		ListaTempoChegada objLista = new ListaTempoChegada();
 		// percorre todas as linhas dos processos
 
 		for (int i = 0; i < quantProcessos; i++) {
 			Integer[] a = obterColunasProcesso(i);
-			objLista.InserirProcessoOrdenado(a[0], a[1],  a[2], a[3]);
+			objLista.InserirProcessoOrdenado(a[0], a[1], a[2], a[3]);
 		}
-		 RoundRobin objQuantum = new RoundRobin(Integer.parseInt(txtFieldQuantum.getText()));
-		 Sjf objSjf=new Sjf();
-		 objSjf.executarProcessos();
+		Sjf objSjf;
+		if (chaveCheckBoxSjf==1){
+			objSjf = new Sjf();
+			objSjf.executarProcessos();
+		}
+		if (chaveCheckBoxRoundRobin==1){
+			RoundRobin objQuantum;
+			objQuantum = new RoundRobin(Integer.parseInt(txtFieldQuantum.getText()));
+		}
+
 	}
 
 	private void atualizarIdNumeroProcesso() {

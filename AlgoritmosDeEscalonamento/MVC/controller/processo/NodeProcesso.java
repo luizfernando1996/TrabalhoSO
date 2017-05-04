@@ -1,7 +1,6 @@
 package controller.processo;
 
-
-public class NodeProcesso{
+public class NodeProcesso {
 
 	// string minusculo ele deseja implementar interface..classe...
 	// deve se digitar String
@@ -16,53 +15,29 @@ public class NodeProcesso{
 	private int prioridade;
 	public NodeProcesso next;
 
-	
-	public NodeProcesso(){}
-	
-	public NodeProcesso(int numeroProcesso,int tempoChegada, int duracaoDoProcesso,int prioridade) {		
-		this.contadorObjeto=numeroProcesso;
-		this.tempoChegada=tempoChegada;
-		this.duracaoSurto=duracaoDoProcesso;
-		this.prioridade=prioridade;
+	public NodeProcesso() {
+		contadorObjeto = 0;
+		tempoChegada = 0;
+		duracaoSurto = 0;
+		prioridade = 0;
+		next = null;
+	}
+
+	public NodeProcesso(int numeroProcesso, int tempoChegada, int duracaoDoProcesso, int prioridade) {
+		this.contadorObjeto = numeroProcesso;
+		this.tempoChegada = tempoChegada;
+		this.duracaoSurto = duracaoDoProcesso;
+		this.prioridade = prioridade;
 		// this.tempoDeSurto = tempoDeSurto;
 		this.next = null;
 		// this.numeroProcesso = numeroProcesso;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
-//	private Integer next;	
+	// private Integer next;
 
 	// ctrl+3 and after "ggas"(generate getters and setters) for to encapsulate
-	
-	//contador da View
+
+	// contador da View
 	public static int getContador() {
 		return contadorDaView;
 	}
@@ -70,7 +45,7 @@ public class NodeProcesso{
 	public static void setContador(int contador) {
 		NodeProcesso.contadorDaView = contador;
 	}
-	
+
 	public int getContadorObjeto() {
 		return contadorObjeto;
 	}
@@ -78,7 +53,7 @@ public class NodeProcesso{
 	public void setContadorObjeto(int contadorObjeto) {
 		this.contadorObjeto = contadorObjeto;
 	}
-	
+
 	public int getTempoChegada() {
 		return tempoChegada;
 	}

@@ -9,7 +9,7 @@ public class RoundRobin {
 	public RoundRobin(int quantum){
 		this.quantum = quantum;
 	}
-	
+	public RoundRobin(){}
 	//criar método para ler o JTable e jogar na fila
 	public void criarFila(){
 		
