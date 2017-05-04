@@ -40,7 +40,7 @@ public class Sjf {
 		p=p.next;
 		while (p != null) {
 			mensagem+="\nO processo a executar foi o processo com identificador:" +p.getContadorObjeto();
-			if(p.getTempoChegada()<tempoDecorrido){
+			if(p.getTempoChegada()<=tempoDecorrido){
 				tempoDeEspera+=(tempoDecorrido-p.getTempoChegada());
 			}
 			else
