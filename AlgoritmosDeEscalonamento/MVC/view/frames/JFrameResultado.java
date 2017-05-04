@@ -1,19 +1,16 @@
 package view.frames;
 
-
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import controller.processo.algoritmosEscalonamento.sjf.Sjf;
 import controller.processo.algoritmosEscalonamento.sjf.NodeResultadoSjf;
+import javax.swing.JTextArea;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class JFrameResultado extends JFrame {
 
@@ -21,88 +18,97 @@ public class JFrameResultado extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JTextField txtFieldTempoEspera;
-	private JTextField textField;
 
 	/**
 	 * Create the frame.
 	 */
 	public JFrameResultado() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+		setBounds(100, 100, 421, 440);
+
+		JLabel lblAOrdemDe = new JLabel("A ordem de execução dos processos:");
+		lblAOrdemDe.setFont(new Font("Tahoma", Font.BOLD, 12));
+
+		JLabel lblOTempoDe = new JLabel("O tempo de espera foi:");
+		lblOTempoDe.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
-		JLabel lblTempoDeEspera = new JLabel("Ordem de execução:");
-		lblTempoDeEspera.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblTempoDeEspera.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		JPanel panel = new JPanel();
-		
-		JPanel panel_1 = new JPanel();
-		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setColumns(10);
-		panel_1.add(textField);
-		
-		Sjf objSjf=new Sjf();
-		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		panel_1.add(scrollPane_1);
-		
-		JLabel label = new JLabel("Tempo de espera:");
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("Tahoma", Font.BOLD, 15));
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblTempoDeEspera, GroupLayout.PREFERRED_SIZE, 424, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(69)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 295, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 295, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(label, GroupLayout.PREFERRED_SIZE, 424, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(lblTempoDeEspera)
-					.addGap(27)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE))
-		);
-		
-		txtFieldTempoEspera = new JTextField();
-		NodeResultadoSjf inicio=objSjf.resultadosPedidos();
-		String mensagem=null;
-		String tempoEspera=null;
-		NodeResultadoSjf p=inicio;
-		while(p!=null){
-			mensagem=p.processoExecutado+"\n";
-			tempoEspera=p.tempoEspera+"\n";
-			p=p.next;
-		}
-		txtFieldTempoEspera.setText(tempoEspera);
-		textField.setText(mensagem);
-		
-		panel.add(txtFieldTempoEspera);
-		txtFieldTempoEspera.setEditable(false);
-		txtFieldTempoEspera.setColumns(10);
+		JScrollPane scrollPane_2 = new JScrollPane();
 		
 		JScrollPane scrollPane = new JScrollPane();
-		panel.add(scrollPane);
-		contentPane.setLayout(gl_contentPane);
+		
+		JTextArea textArea = new JTextArea();
+		
+		JLabel lblOTempoDe_1 = new JLabel("O tempo de espera dos processos foi:");
+		lblOTempoDe_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(72)
+							.addComponent(lblAOrdemDe))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(34)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(scrollPane_2, GroupLayout.PREFERRED_SIZE, 332, GroupLayout.PREFERRED_SIZE)
+								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 324, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 322, GroupLayout.PREFERRED_SIZE))
+							.addGap(77)
+							.addComponent(lblOTempoDe, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(69)
+							.addComponent(lblOTempoDe_1, GroupLayout.PREFERRED_SIZE, 271, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblAOrdemDe)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(scrollPane_2, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblOTempoDe_1, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblOTempoDe, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(19)
+							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		
+		JTextArea textArea_1 = new JTextArea();
+		scrollPane_2.setViewportView(textArea_1);
+		getContentPane().setLayout(groupLayout);
+
+		Sjf objSjf = new Sjf();
+
+		NodeResultadoSjf inicio = objSjf.resultadosPedidos();
+		String mensagem = null;
+		String tempoEspera = null;
+		NodeResultadoSjf p = inicio;
+		int cont = 0;
+		while (p != null) {
+			//geralmente em strings para não ficar valores nulls deve se colocar um caso para
+			//somente uma unica execução
+			if (cont == 0) {
+				mensagem = p.processoExecutado + "\n";
+				tempoEspera = p.tempoEspera + "\n";
+				cont++;//dentro deste caso vc coloca para nunca mais ele acontecer
+			} else {
+				mensagem += p.processoExecutado + "\n";
+				tempoEspera += p.tempoEspera + "\n";
+			}
+			p = p.next;
+		}
+		textArea.setText(tempoEspera);
+		textArea_1.setText(mensagem);
+		// textField.setText(mensagem);
+		// txtFieldTempoEspera.setText(tempoEspera);
+
 	}
 }

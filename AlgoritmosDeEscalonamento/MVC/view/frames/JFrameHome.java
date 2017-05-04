@@ -269,8 +269,9 @@ public class JFrameHome extends JFrame {
 			objSjf.executarProcessos();
 		}
 		if (chaveCheckBoxRoundRobin==1){
-			RoundRobin objQuantum;
-			objQuantum = new RoundRobin(Integer.parseInt(txtFieldQuantum.getText()));
+			//nao aparecer o warning deste objeto
+			@SuppressWarnings("unused")
+			RoundRobin objQuantum=new RoundRobin(Integer.parseInt(txtFieldQuantum.getText()));
 		}
 
 	}

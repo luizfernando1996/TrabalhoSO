@@ -11,7 +11,7 @@ public class Sjf {
 	// private String mensagem;
 	private NodeProcesso inicio;
 	private String mensagem;
-	private NodeResultadoSjf first;
+	private static NodeResultadoSjf first;
 	public Sjf() {
 	}
 	
@@ -32,25 +32,30 @@ public class Sjf {
 
 	public void informarTempoDeEspera() {
 		NodeProcesso p = inicio;
+		int contProcessos=1;
 		//o primeiro processo ele ja é executado..não existe tempo para ele ser executado
-		int tempoDecorrido = 0;
-		int tempoDeEspera=0;
+		double tempoDeEspera=0;
 		mensagem="O processo a executar foi o processo com identificador:" +p.getContadorObjeto();
+		double tempoDecorrido = p.getDuracaoSurto();
 		p=p.next;
 		while (p != null) {
 			mensagem+="\nO processo a executar foi o processo com identificador:" +p.getContadorObjeto();
 			if(p.getTempoChegada()<tempoDecorrido){
 				tempoDeEspera+=(tempoDecorrido-p.getTempoChegada());
-				tempoDecorrido+=p.getDuracaoSurto();
 			}
 			else
 			{
-				insereNaListaDeResultados(mensagem,Integer.toString(tempoDeEspera));
+				tempoDeEspera=tempoDeEspera/contProcessos;
+				insereNaListaDeResultados(mensagem,Double.toString(tempoDeEspera));
 				mensagem=null;
 				tempoDeEspera=0;
 			}
+			contProcessos++;
+			tempoDecorrido+=p.getDuracaoSurto();
 			p=p.next;
 		}
+		tempoDeEspera=tempoDeEspera/contProcessos;
+		insereNaListaDeResultados(mensagem,Double.toString(tempoDeEspera));
 	}
 	public void insereNaListaDeResultados(String mensagem,String tempoDeEspera){
 		NodeResultadoSjf obj=new NodeResultadoSjf(mensagem,tempoDeEspera);
