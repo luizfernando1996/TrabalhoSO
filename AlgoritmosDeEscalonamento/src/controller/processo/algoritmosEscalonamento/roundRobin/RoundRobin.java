@@ -10,7 +10,7 @@ public class RoundRobin {
 	// não sei se tem que ser static
 	public static int tempoDeEspera, tempoDeExecucao;
 	public String ordemDeExecucao = "-------------------------------Round Robin------------------------------";
-
+	public static double  media;
 	public void executar() {
 		filaProcessos.criarFila();
 		NodeProcesso p = filaProcessos.inicio;
@@ -43,7 +43,7 @@ public class RoundRobin {
 			
 		}	
 		// calculo de média
-		double media = tempoDeEspera / NodeProcesso.getContador();
+		media = tempoDeEspera / NodeProcesso.getContador();
 		
 		// JOptionPane.showMessageDialog(null, "Adicione pelo menos um
 		// processo");
