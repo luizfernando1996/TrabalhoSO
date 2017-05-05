@@ -104,10 +104,15 @@ public class JFrameResultado extends JFrame {
 //			}
 //			p = p.next;
 //		}
+		
+		
+		
+		//passar para a textArea.setText o tempo de espera do meu algoritmo
+		//passar para a textArea1 a ordem de execucao
 //		textArea.setText(tempoEspera);
 //		textArea_1.setText(mensagem);
-	//passar para a textArea.setText o tempo de espera do meu algoritmo
-		//passar para a textArea1 a ordem de execucao
+		
+
 
 	}
 }
