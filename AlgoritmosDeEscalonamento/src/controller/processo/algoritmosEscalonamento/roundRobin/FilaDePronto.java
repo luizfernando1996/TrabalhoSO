@@ -11,8 +11,8 @@ public class FilaDePronto {
 	}	
 
 	
-	public void InserirProcessoOrdenado(int numeroProcesso,int tempoChegada, int duracaoDoProcesso,int prioridade) {
-		NodeProcesso novo = new NodeProcesso(numeroProcesso, tempoChegada, duracaoDoProcesso,prioridade);
+	public void InserirProcessoOrdenado(int numeroProcesso,int tempoChegada, int duracaoDoProcesso) {
+		NodeProcesso novo = new NodeProcesso(numeroProcesso, tempoChegada, duracaoDoProcesso);
 	NodeProcesso ant = null;
 	NodeProcesso p = inicio;
 

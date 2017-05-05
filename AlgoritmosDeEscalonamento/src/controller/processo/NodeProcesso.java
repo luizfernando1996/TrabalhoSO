@@ -21,7 +21,7 @@ public class NodeProcesso {
 		next = null;
 	}
 
-	public NodeProcesso(int numeroProcesso, int tempoChegada, int duracaoDoProcesso, int prioridade) {
+	public NodeProcesso(int numeroProcesso, int tempoChegada, int duracaoDoProcesso) {
 		this.contadorObjeto = numeroProcesso;
 		this.tempoChegada = tempoChegada;
 		this.duracaoSurto = duracaoDoProcesso;

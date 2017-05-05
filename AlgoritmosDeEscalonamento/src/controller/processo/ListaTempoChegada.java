@@ -12,9 +12,9 @@ public class ListaTempoChegada {
 		return sentinela.next == null;
 	}
 
-	public void InserirProcessoOrdenado(int numeroProcesso, int tempoChegada, int duracaoDoProcesso, int prioridade) {
+	public void InserirProcessoOrdenado(int numeroProcesso, int tempoChegada, int duracaoDoProcesso) {
 		
-		NodeProcesso novo = new NodeProcesso(numeroProcesso, tempoChegada, duracaoDoProcesso, prioridade);
+		NodeProcesso novo = new NodeProcesso(numeroProcesso, tempoChegada, duracaoDoProcesso);
 		NodeProcesso ant = null;
 		NodeProcesso p = sentinela.next;
 

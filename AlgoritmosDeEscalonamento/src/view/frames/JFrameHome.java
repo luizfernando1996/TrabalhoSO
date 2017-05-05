@@ -280,7 +280,7 @@ public class JFrameHome extends JFrame {
 
 		for (int i = 0; i < quantProcessos; i++) {
 			Integer[] a = obterColunasProcesso(i);
-			objLista.InserirProcessoOrdenado(a[0], a[1], a[2], a[3]);
+			objLista.InserirProcessoOrdenado(a[0], a[1], a[2]);
 		}
 		Sjf objSjf;
 		if (chaveCheckBoxSjf == 1 && quantProcessos > 0) {
@@ -315,7 +315,7 @@ public class JFrameHome extends JFrame {
 		// int quantProcessos =
 		// ((DefaultTableModel)table.getModel()).getRowCount();
 		Integer[] a = new Integer[4];
-		for (int x = 0; x < 4; x++) {
+		for (int x = 0; x < 3; x++) {
 			a[x] = Integer.parseInt(dtm.getValueAt(i, x).toString());
 		}
 		return a;

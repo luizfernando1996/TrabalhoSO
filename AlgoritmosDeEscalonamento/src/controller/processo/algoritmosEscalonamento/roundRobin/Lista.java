@@ -14,8 +14,8 @@ public class Lista {
 		return sentinela.next == null;
 	}
 	
-	public void insereLista(int numeroProcesso,int tempoChegada, int duracaoDoProcesso,int prioridade){
-		NodeProcesso novo = new NodeProcesso(numeroProcesso, tempoChegada, duracaoDoProcesso,prioridade);
+	public void insereLista(int numeroProcesso,int tempoChegada, int duracaoDoProcesso){
+		NodeProcesso novo = new NodeProcesso(numeroProcesso, tempoChegada, duracaoDoProcesso);
 		NodeProcesso p = sentinela;
 		if(listaVazia()){
 			sentinela.next = novo;
