@@ -41,16 +41,12 @@ public class JFrameResultado extends JFrame {
 		JLabel lblOTempoDe_1 = new JLabel("O tempo de médio espera dos processos foi:");
 		lblOTempoDe_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(72)
-							.addComponent(lblAOrdemDe))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(34)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addGroup(groupLayout
+				.createSequentialGroup()
+				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup().addGap(72).addComponent(lblAOrdemDe))
+						.addGroup(groupLayout.createSequentialGroup().addGap(34).addGroup(groupLayout
+								.createParallelGroup(Alignment.LEADING)
 								.addComponent(scrollPane_2, GroupLayout.PREFERRED_SIZE, 332, GroupLayout.PREFERRED_SIZE)
 								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 324, GroupLayout.PREFERRED_SIZE)
 								.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 322, GroupLayout.PREFERRED_SIZE))
@@ -79,37 +75,38 @@ public class JFrameResultado extends JFrame {
 		scrollPane_2.setViewportView(textArea_1);
 		getContentPane().setLayout(groupLayout);
 
-//		Sjf objSjf = new Sjf();
-//
-//		NodeResultadoSjf inicio = objSjf.resultadosPedidos();
-//		String mensagem = null;
-//		String tempoEspera = null;
-//		NodeResultadoSjf p = inicio;
-//		int cont = 0;
-//		while (p != null) {
-//			// geralmente em strings para não ficar valores nulls deve se
-//			// colocar
-//			// um caso para somente uma unica execução
-//			if (cont == 0) {
-//				mensagem = p.processoExecutado + "\n";
-//				tempoEspera = p.tempoEspera + "\n";
-//				cont++;// dentro deste caso vc coloca para nunca mais ele
-//						// acontecer
-//			} else {
-//				mensagem += p.processoExecutado + "\n";
-//				tempoEspera += p.tempoEspera + "\n";
-//			}
-//			p = p.next;
-//		}
+		Sjf objSjf = new Sjf();
+		if (Sjf.sjf) {
+			NodeResultadoSjf inicio = objSjf.resultadosPedidos();
 
-		// passar para a textArea.setText o tempo de espera do meu algoritmo
-		// passar para a textArea1 a ordem de execucao
-		//textArea.setText(tempoEspera);
-		//textArea_1.setText(mensagem);
-		RoundRobin objRound= new RoundRobin();
-		String mensagem=Double.toString(RoundRobin.media);		
-		textArea.setText(mensagem);
-		mensagem=objRound.ordemDeExecucao;
-		textArea_1.setText(mensagem);
+			String mensagem = "";
+			String tempoEspera = "";
+			NodeResultadoSjf p = inicio;
+			int cont = 0;
+			while (p != null) {
+				// geralmente em strings para não ficar valores nulls deve se
+				// colocar
+				// um caso para somente uma unica execução
+				if (cont == 0) {
+					mensagem = p.processoExecutado + "\n";
+					tempoEspera = p.tempoEspera + "\n";
+					cont++;// dentro deste caso vc coloca para nunca mais ele
+					// acontecer
+				} else {
+					mensagem += p.processoExecutado + "\n";
+					tempoEspera += p.tempoEspera + "\n";
+				}
+				p = p.next;
+			}
+			textArea.setText(tempoEspera);
+			textArea_1.setText(mensagem);
+
+		} else {
+			String infor = Double.toString(RoundRobin.media);
+			textArea.setText(infor);
+
+			String mensagem2 = RoundRobin.ordemDeExecucao;
+			textArea_1.setText(mensagem2);
+		} 	
 	}
 }

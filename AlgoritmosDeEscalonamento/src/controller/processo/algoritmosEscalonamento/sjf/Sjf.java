@@ -9,6 +9,7 @@ public class Sjf {
 	private NodeProcesso inicio;
 	private String mensagem;
 	private static NodeResultadoSjf first;
+	public static boolean sjf;
 	public Sjf() {
 	}
 	
@@ -45,8 +46,8 @@ public class Sjf {
 			{
 				tempoDeEspera=tempoDeEspera/contProcessos;
 				insereNaListaDeResultados(mensagem,Double.toString(tempoDeEspera));
-				mensagem=null;
-				tempoDeEspera=0;
+				//mensagem="";
+				//tempoDeEspera=0;
 			}
 			contProcessos++;
 			tempoDecorrido+=p.getDuracaoSurto();

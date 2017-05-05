@@ -225,6 +225,11 @@ public class JFrameHome extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel.setBounds(165, 11, 223, 11);
 		contentPane.add(lblNewLabel);
+		
+		JLabel lblSelecioneApenasUm = new JLabel("Selecione apenas um escalonador");
+		lblSelecioneApenasUm.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblSelecioneApenasUm.setBounds(299, 105, 225, 23);
+		contentPane.add(lblSelecioneApenasUm);
 
 	}
 
@@ -283,9 +288,11 @@ public class JFrameHome extends JFrame {
 		}
 		if (chaveCheckBoxSjf == 1 && quantProcessos > 0) {
 			Sjf objSjf = objSjf = new Sjf();
+			Sjf.sjf=true;
 			objSjf.executarProcessos();
 		}
-		if (chaveCheckBoxRoundRobin == 1 && quantProcessos > 0) {
+		else if (chaveCheckBoxRoundRobin == 1 && quantProcessos > 0) {
+			Sjf.sjf=false;
 			RoundRobin rr = new RoundRobin();
 			rr.quantum = Integer.parseInt(txtFieldQuantum.getText());
 			rr.executar();
