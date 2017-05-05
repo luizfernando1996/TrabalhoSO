@@ -1,15 +1,12 @@
 package controller.processo.algoritmosEscalonamento.roundRobin;
 
-import javax.swing.JOptionPane;
-
 import controller.processo.NodeProcesso;
 
 public class RoundRobin {
 	public int quantum;
-	Fila filaProcessos = new Fila();
-	// não sei se tem que ser static
+	Fila filaProcessos = new Fila();	
 	public static int tempoDeEspera, tempoDeExecucao;
-	public String ordemDeExecucao = "-------------------------------Round Robin------------------------------";
+	public static String ordemDeExecucao = "-------------------------------Round Robin------------------------------";
 	public static double media;
 
 	public void executar() {
@@ -18,7 +15,7 @@ public class RoundRobin {
 
 		while (p != null) {
 			int tempoDeSurto = p.getDuracaoSurto();
-			ordemDeExecucao += ("Processo: " + p.getContadorObjeto() + "\n");
+			ordemDeExecucao += ("\nProcesso: " + p.getContadorObjeto());
 			if (p.terminoUltimaExecucao == 0) {
 				tempoDeEspera += tempoDeExecucao - p.getTempoChegada();
 			}
@@ -39,10 +36,8 @@ public class RoundRobin {
 			}
 			p.terminoUltimaExecucao = tempoDeExecucao;
 			p = p.next;
-		}
-		// calculo de média
+		}		
 		media = tempoDeEspera / NodeProcesso.getContador();
-
 	}
 
 	public void retiraProcesso(NodeProcesso processo) {
