@@ -32,7 +32,8 @@ public class Sjf {
 		int contProcessos=1;
 		//o primeiro processo ele ja é executado..não existe tempo para ele ser executado
 		double tempoDeEspera=0;
-		mensagem="O processo a executar foi o processo com identificador:" +p.getContadorObjeto();
+		mensagem="-----------------------------------SJF-----------------------------------\n";
+		mensagem+="O processo a executar foi o processo com identificador:" +p.getContadorObjeto();
 		double tempoDecorrido = p.getDuracaoSurto();
 		p=p.next;
 		while (p != null) {
