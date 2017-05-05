@@ -9,7 +9,7 @@ public class RoundRobin {
 	Fila filaProcessos = new Fila();
 	// não sei se tem que ser static
 	public static int tempoDeEspera, tempoDeExecucao;
-	public String ordemDeExecucao;
+	public String ordemDeExecucao = "-------------------------------Round Robin------------------------------";
 
 	public void executar() {
 		filaProcessos.criarFila();
@@ -17,7 +17,7 @@ public class RoundRobin {
 		
 		while(p != null){
 			int tempoDeSurto = p.getDuracaoSurto();	
-			ordemDeExecucao = ("Processo: "+ p.getContadorObjeto());
+			ordemDeExecucao += ("Processo: "+ p.getContadorObjeto() + "\n");
 			if(p.terminoUltimaExecucao == 0){
 				tempoDeEspera += tempoDeExecucao - p.getTempoChegada(); 					
 			}
