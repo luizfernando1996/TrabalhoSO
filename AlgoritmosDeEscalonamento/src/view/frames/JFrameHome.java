@@ -303,10 +303,7 @@ public class JFrameHome extends JFrame {
 	}
 
 	private int informarLinhasTabela() {
-		int retorno=((DefaultTableModel) table.getModel()).getRowCount();
-		JOptionPane.showMessageDialog(null,
-				retorno);
-		return retorno;
+		return ((DefaultTableModel) table.getModel()).getRowCount();
 
 	}
 

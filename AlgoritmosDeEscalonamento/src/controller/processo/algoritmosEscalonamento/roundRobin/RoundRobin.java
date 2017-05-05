@@ -14,44 +14,59 @@ public class RoundRobin {
 	public void executar() {
 		filaProcessos.criarFila();
 		NodeProcesso p = filaProcessos.inicio;
-
-		while (p != null) {
-			int tempoDeSurto = p.getDuracaoSurto();
-			ordemDeExecucao = ("Processo: " + p.getContadorObjeto());
-			if (p.terminoUltimaExecucao == 0) {
-				tempoDeEspera += tempoDeExecucao - p.getTempoChegada();
+		
+		while(p != null){
+			int tempoDeSurto = p.getDuracaoSurto();	
+			ordemDeExecucao = ("Processo: "+ p.getContadorObjeto());
+			if(p.terminoUltimaExecucao == 0){
+				tempoDeEspera += tempoDeExecucao - p.getTempoChegada(); 					
 			}
-			if (p.terminoUltimaExecucao > 0) {
+			if (p.terminoUltimaExecucao > 0){
 				tempoDeEspera += tempoDeExecucao - p.terminoUltimaExecucao;
-
+				
 			}
-			if (tempoDeSurto >= quantum) {
+			if(tempoDeSurto >= quantum){
 				p.setDuracaoSurto(p.getDuracaoSurto() - quantum);
 				tempoDeExecucao += quantum;
 			}
-			if (tempoDeSurto < quantum) {
+			if(tempoDeSurto < quantum){
 				tempoDeExecucao += p.getDuracaoSurto();
-				p.setDuracaoSurto(0);
+				p.setDuracaoSurto(0);				
 			}
-			if (p.getDuracaoSurto() == 0) {
+			if(p.getDuracaoSurto() == 0 ){
 				retiraProcesso(p);
-				p = filaProcessos.inicio;
-			} else {
+				p = filaProcessos.inicio;				
+			}
+			else{
 				p = p.next;
 			}
 			// calculo de média
 			double media = tempoDeEspera / NodeProcesso.getContador();
-
-		}
-
+			
+		}	
+		
 		// JOptionPane.showMessageDialog(null, "Adicione pelo menos um
 		// processo");
 		// contadorObjeto;
 		// ordemDeExecucao="Executou processo ; }
-
+		
 	}
-
-	public void retiraProcesso(NodeProcesso processo) {
-
+	
+	public void retiraProcesso(NodeProcesso processo){
+		NodeProcesso p = filaProcessos.inicio;
+		
+		if(p.getContadorObjeto() == processo.getContadorObjeto()){
+			filaProcessos.inicio = p.next;
+			filaProcessos.fim.next = p.next;
+		}
+		else{
+			
+			while(p.next != null){
+				
+				if(p.next.getContadorObjeto() == p.getContadorObjeto()){
+					p.next = p.next.next;
+				}
+			}
+	}
 	}
 }
