@@ -79,33 +79,37 @@ public class JFrameResultado extends JFrame {
 		scrollPane_2.setViewportView(textArea_1);
 		getContentPane().setLayout(groupLayout);
 
-		Sjf objSjf = new Sjf();
-
-		NodeResultadoSjf inicio = objSjf.resultadosPedidos();
-		String mensagem = null;
-		String tempoEspera = null;
-		NodeResultadoSjf p = inicio;
-		int cont = 0;
-		while (p != null) {
-			// geralmente em strings para não ficar valores nulls deve se
-			// colocar
-			// um caso para somente uma unica execução
-			if (cont == 0) {
-				mensagem = p.processoExecutado + "\n";
-				tempoEspera = p.tempoEspera + "\n";
-				cont++;// dentro deste caso vc coloca para nunca mais ele
-						// acontecer
-			} else {
-				mensagem += p.processoExecutado + "\n";
-				tempoEspera += p.tempoEspera + "\n";
-			}
-			p = p.next;
-		}
+//		Sjf objSjf = new Sjf();
+//
+//		NodeResultadoSjf inicio = objSjf.resultadosPedidos();
+//		String mensagem = null;
+//		String tempoEspera = null;
+//		NodeResultadoSjf p = inicio;
+//		int cont = 0;
+//		while (p != null) {
+//			// geralmente em strings para não ficar valores nulls deve se
+//			// colocar
+//			// um caso para somente uma unica execução
+//			if (cont == 0) {
+//				mensagem = p.processoExecutado + "\n";
+//				tempoEspera = p.tempoEspera + "\n";
+//				cont++;// dentro deste caso vc coloca para nunca mais ele
+//						// acontecer
+//			} else {
+//				mensagem += p.processoExecutado + "\n";
+//				tempoEspera += p.tempoEspera + "\n";
+//			}
+//			p = p.next;
+//		}
 
 		// passar para a textArea.setText o tempo de espera do meu algoritmo
 		// passar para a textArea1 a ordem de execucao
-		textArea.setText(tempoEspera);
+		//textArea.setText(tempoEspera);
+		//textArea_1.setText(mensagem);
+		RoundRobin objRound= new RoundRobin();
+		String mensagem=Double.toString(RoundRobin.media);		
+		textArea.setText(mensagem);
+		mensagem=objRound.ordemDeExecucao;
 		textArea_1.setText(mensagem);
-
 	}
 }
