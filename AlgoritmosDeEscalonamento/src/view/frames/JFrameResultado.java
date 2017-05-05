@@ -7,6 +7,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import controller.processo.algoritmosEscalonamento.sjf.Sjf;
+import controller.processo.algoritmosEscalonamento.roundRobin.RoundRobin;
 import controller.processo.algoritmosEscalonamento.sjf.NodeResultadoSjf;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
@@ -37,15 +38,19 @@ public class JFrameResultado extends JFrame {
 
 		JTextArea textArea = new JTextArea();
 
-		JLabel lblOTempoDe_1 = new JLabel("O tempo de espera dos processos foi:");
+		JLabel lblOTempoDe_1 = new JLabel("O tempo de médio espera dos processos foi:");
 		lblOTempoDe_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addGroup(groupLayout
-				.createSequentialGroup()
-				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup().addGap(72).addComponent(lblAOrdemDe))
-						.addGroup(groupLayout.createSequentialGroup().addGap(34).addGroup(groupLayout
-								.createParallelGroup(Alignment.LEADING)
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(72)
+							.addComponent(lblAOrdemDe))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(34)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(scrollPane_2, GroupLayout.PREFERRED_SIZE, 332, GroupLayout.PREFERRED_SIZE)
 								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 324, GroupLayout.PREFERRED_SIZE)
 								.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 322, GroupLayout.PREFERRED_SIZE))

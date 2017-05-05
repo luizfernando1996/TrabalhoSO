@@ -106,17 +106,17 @@ public class JFrameHome extends JFrame {
 		JButton btnNewButton = new JButton("Executar");
 		btnNewButton.setBounds(220, 425, 129, 23);
 		btnNewButton.addActionListener(new ActionListener() {
-			boolean tudoCorreto = true;
-
 			public void actionPerformed(ActionEvent e) {
+				boolean tudoCorreto = true;
+
 				// não selecionou a checkbox
 				if (chaveCheckBoxSjf == 0 && chaveCheckBoxRoundRobin == 0) {
 					JOptionPane.showMessageDialog(null,
 							"Selecione um checkbox para que o escalonador possa simular a execução");
 					tudoCorreto = false;
 					// não informou o quantum
-				} else if (chaveCheckBoxRoundRobin == 1&&txtFieldQuantum.getText() == null) {
-						tudoCorreto = false;
+				} else if (chaveCheckBoxRoundRobin == 1 && txtFieldQuantum.getText() == null) {
+					tudoCorreto = false;
 				}
 				if (tudoCorreto == true) {
 					if (informarLinhasTabela() <= 0)
@@ -128,7 +128,6 @@ public class JFrameHome extends JFrame {
 						JFrameHome.this.dispose();
 					}
 				}
-				tudoCorreto=true;
 			}
 		});
 
@@ -282,12 +281,11 @@ public class JFrameHome extends JFrame {
 			Integer[] a = obterColunasProcesso(i);
 			objLista.InserirProcessoOrdenado(a[0], a[1], a[2]);
 		}
-		Sjf objSjf;
 		if (chaveCheckBoxSjf == 1 && quantProcessos > 0) {
-			objSjf = new Sjf();
+			Sjf objSjf = objSjf = new Sjf();
 			objSjf.executarProcessos();
 		}
-		if (chaveCheckBoxRoundRobin == 1 && quantProcessos > 0) {			
+		if (chaveCheckBoxRoundRobin == 1 && quantProcessos > 0) {
 			RoundRobin rr = new RoundRobin();
 			rr.quantum = Integer.parseInt(txtFieldQuantum.getText());
 			rr.executar();
@@ -305,7 +303,11 @@ public class JFrameHome extends JFrame {
 	}
 
 	private int informarLinhasTabela() {
-		return ((DefaultTableModel) table.getModel()).getRowCount();
+		int retorno=((DefaultTableModel) table.getModel()).getRowCount();
+		JOptionPane.showMessageDialog(null,
+				retorno);
+		return retorno;
+
 	}
 
 	// Aqui se obtêm a linha da tabela

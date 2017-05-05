@@ -12,6 +12,7 @@ public class NodeProcesso {
 	private int contadorObjeto;
 	private int tempoChegada;
 	private int duracaoSurto;
+	public static int terminoUltimaExecucao = 0;
 	public NodeProcesso next;
 
 	public NodeProcesso() {
