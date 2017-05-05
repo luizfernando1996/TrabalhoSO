@@ -1,21 +1,13 @@
 package controller.processo.algoritmosEscalonamento.roundRobin;
 
 public class RoundRobin {
-
 	public int quantum;
+	Fila filaProcessos = new Fila();
 	
-	FilaDePronto fila = new FilaDePronto();
-	
-	public RoundRobin(int quantum){
-		this.quantum = quantum;
-	}
-	public RoundRobin(){}
-	//criar método para ler o JTable e jogar na fila
-	public void criarFila(){
-		
-	}
 	public void executar(){
-		//NodeFila executando  = fila.retiraFila();
+		filaProcessos.criarFila();
+		System.out.println("POG");
+		//qualquer coisa
 	}
-	
+
 }

@@ -35,17 +35,6 @@ public class ListaTempoChegada {
 	}
 	public NodeProcesso retonarListaComSentinela(){
 		return sentinela;
-	}
-	
-	//O negocio abaixo é uma POG porque vc deveria pegar a lista com sentinela e não ja uma lista sem sentinela
-	//Para vc transformar uma lista com sentinela em uma sem é só vc criar uma referencia(chamada inicio) que
-	//aponta para o proximo objeto da sentinela. Isto pode ser ilustrado pelo comando abaixo:
-	
-	//NodeProcesso inicioFila=retornarListaComSentinela();
-	//inicioFila=inicioFila.next;
-	
-	public NodeProcesso retornarListaSemSentinela(){
-		return sentinela.next;
-	}
+	}	
 
 }

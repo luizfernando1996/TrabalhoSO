@@ -287,10 +287,10 @@ public class JFrameHome extends JFrame {
 			objSjf = new Sjf();
 			objSjf.executarProcessos();
 		}
-		if (chaveCheckBoxRoundRobin == 1 && quantProcessos > 0) {
-			// nao aparecer o warning deste objeto
-			@SuppressWarnings("unused")
-			RoundRobin objQuantum = new RoundRobin(Integer.parseInt(txtFieldQuantum.getText()));
+		if (chaveCheckBoxRoundRobin == 1 && quantProcessos > 0) {			
+			RoundRobin rr = new RoundRobin();
+			rr.quantum = Integer.parseInt(txtFieldQuantum.getText());
+			rr.executar();
 		}
 
 	}
