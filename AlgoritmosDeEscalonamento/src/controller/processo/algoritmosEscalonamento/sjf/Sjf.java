@@ -10,8 +10,7 @@ public class Sjf {
 	private String mensagem;
 	private static NodeResultadoSjf first;
 	public static boolean sjf;
-	public Sjf() {
-	}
+
 	
 	public boolean listaVazia(){
 		return first==null;

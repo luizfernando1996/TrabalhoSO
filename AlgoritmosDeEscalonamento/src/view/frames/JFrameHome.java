@@ -287,7 +287,7 @@ public class JFrameHome extends JFrame {
 			objLista.InserirProcessoOrdenado(a[0], a[1], a[2]);
 		}
 		if (chaveCheckBoxSjf == 1 && quantProcessos > 0) {
-			Sjf objSjf = objSjf = new Sjf();
+			Sjf objSjf = new Sjf();
 			Sjf.sjf=true;
 			objSjf.executarProcessos();
 		}
