@@ -3,12 +3,9 @@ package controller.processo.algoritmosEscalonamento.sjf;
 import controller.processo.ListaTempoChegada;
 import controller.processo.NodeProcesso;
 import controller.processo.algoritmosEscalonamento.sjf.ListaOrdenadaPeloSjf;
-//import controller.processo.Processo;
 
 public class Sjf {
-	// private int tempoProcess;
 
-	// private String mensagem;
 	private NodeProcesso inicio;
 	private String mensagem;
 	private static NodeResultadoSjf first;

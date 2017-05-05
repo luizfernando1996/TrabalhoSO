@@ -30,89 +30,77 @@ public class JFrameResultado extends JFrame {
 
 		JLabel lblOTempoDe = new JLabel("O tempo de espera foi:");
 		lblOTempoDe.setFont(new Font("Tahoma", Font.BOLD, 12));
-		
+
 		JScrollPane scrollPane_2 = new JScrollPane();
-		
+
 		JScrollPane scrollPane = new JScrollPane();
-		
+
 		JTextArea textArea = new JTextArea();
-		
+
 		JLabel lblOTempoDe_1 = new JLabel("O tempo de espera dos processos foi:");
 		lblOTempoDe_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(72)
-							.addComponent(lblAOrdemDe))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(34)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addGroup(groupLayout
+				.createSequentialGroup()
+				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup().addGap(72).addComponent(lblAOrdemDe))
+						.addGroup(groupLayout.createSequentialGroup().addGap(34).addGroup(groupLayout
+								.createParallelGroup(Alignment.LEADING)
 								.addComponent(scrollPane_2, GroupLayout.PREFERRED_SIZE, 332, GroupLayout.PREFERRED_SIZE)
 								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 324, GroupLayout.PREFERRED_SIZE)
 								.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 322, GroupLayout.PREFERRED_SIZE))
-							.addGap(77)
-							.addComponent(lblOTempoDe, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(69)
-							.addComponent(lblOTempoDe_1, GroupLayout.PREFERRED_SIZE, 271, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblAOrdemDe)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(scrollPane_2, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblOTempoDe_1, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblOTempoDe, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(19)
-							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		
+								.addGap(77)
+								.addComponent(lblOTempoDe, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup().addGap(69).addComponent(lblOTempoDe_1,
+								GroupLayout.PREFERRED_SIZE, 271, GroupLayout.PREFERRED_SIZE)))
+				.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup().addContainerGap().addComponent(lblAOrdemDe)
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(scrollPane_2, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(lblOTempoDe_1, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblOTempoDe, GroupLayout.PREFERRED_SIZE, 15,
+										GroupLayout.PREFERRED_SIZE)
+								.addGroup(groupLayout.createSequentialGroup().addGap(19).addComponent(scrollPane,
+										GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE)))
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+
 		JTextArea textArea_1 = new JTextArea();
 		scrollPane_2.setViewportView(textArea_1);
 		getContentPane().setLayout(groupLayout);
 
-//		Sjf objSjf = new Sjf();
-//
-//		NodeResultadoSjf inicio = objSjf.resultadosPedidos();
-//		String mensagem = null;
-//		String tempoEspera = null;
-//		NodeResultadoSjf p = inicio;
-//		int cont = 0;
-//		while (p != null) {
-//			//geralmente em strings para não ficar valores nulls deve se colocar um caso para
-//			//somente uma unica execução
-//			if (cont == 0) {
-//				mensagem = p.processoExecutado + "\n";
-//				tempoEspera = p.tempoEspera + "\n";
-//				cont++;//dentro deste caso vc coloca para nunca mais ele acontecer
-//			} else {
-//				mensagem += p.processoExecutado + "\n";
-//				tempoEspera += p.tempoEspera + "\n";
-//			}
-//			p = p.next;
-//		}
-		
-		
-		
-		//passar para a textArea.setText o tempo de espera do meu algoritmo
-		//passar para a textArea1 a ordem de execucao
-//		textArea.setText(tempoEspera);
-//		textArea_1.setText(mensagem);
-		
+		Sjf objSjf = new Sjf();
 
+		NodeResultadoSjf inicio = objSjf.resultadosPedidos();
+		String mensagem = null;
+		String tempoEspera = null;
+		NodeResultadoSjf p = inicio;
+		int cont = 0;
+		while (p != null) {
+			// geralmente em strings para não ficar valores nulls deve se
+			// colocar
+			// um caso para somente uma unica execução
+			if (cont == 0) {
+				mensagem = p.processoExecutado + "\n";
+				tempoEspera = p.tempoEspera + "\n";
+				cont++;// dentro deste caso vc coloca para nunca mais ele
+						// acontecer
+			} else {
+				mensagem += p.processoExecutado + "\n";
+				tempoEspera += p.tempoEspera + "\n";
+			}
+			p = p.next;
+		}
+
+		// passar para a textArea.setText o tempo de espera do meu algoritmo
+		// passar para a textArea1 a ordem de execucao
+		textArea.setText(tempoEspera);
+		textArea_1.setText(mensagem);
 
 	}
 }
