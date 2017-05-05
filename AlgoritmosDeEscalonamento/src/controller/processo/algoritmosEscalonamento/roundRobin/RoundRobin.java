@@ -1,6 +1,6 @@
 package controller.processo.algoritmosEscalonamento.roundRobin;
 
-//import javax.swing.JOptionPane;
+import javax.swing.JOptionPane;
 
 import controller.processo.NodeProcesso;
 
@@ -10,76 +10,67 @@ public class RoundRobin {
 	// não sei se tem que ser static
 	public static int tempoDeEspera, tempoDeExecucao;
 	public String ordemDeExecucao = "-------------------------------Round Robin------------------------------";
-	public static double  media;
+	public static double media;
+
 	public void executar() {
 		filaProcessos.criarFila();
 		NodeProcesso p = filaProcessos.inicio;
-		
-		while(p != null){
-			int tempoDeSurto = p.getDuracaoSurto();	
-			ordemDeExecucao += ("Processo: "+ p.getContadorObjeto() + "\n");
-			if(p.terminoUltimaExecucao == 0){
-				tempoDeEspera += tempoDeExecucao - p.getTempoChegada(); 					
+
+		while (p != null) {
+			int tempoDeSurto = p.getDuracaoSurto();
+			ordemDeExecucao += ("Processo: " + p.getContadorObjeto() + "\n");
+			if (p.terminoUltimaExecucao == 0) {
+				tempoDeEspera += tempoDeExecucao - p.getTempoChegada();
 			}
-			if (p.terminoUltimaExecucao > 0){
+			if (p.terminoUltimaExecucao > 0) {
 				tempoDeEspera += tempoDeExecucao - p.terminoUltimaExecucao;
-				
+
 			}
-			if(tempoDeSurto >= quantum){
+			if (tempoDeSurto >= quantum) {
 				p.setDuracaoSurto(p.getDuracaoSurto() - quantum);
 				tempoDeExecucao += quantum;
 			}
-			if(tempoDeSurto < quantum){
+			if (tempoDeSurto < quantum) {
 				tempoDeExecucao += p.getDuracaoSurto();
-				p.setDuracaoSurto(0);				
+				p.setDuracaoSurto(0);
 			}
-			if(p.getDuracaoSurto() == 0 ){
-			retiraProcesso(p);
-//				p = filaProcessos.inicio;				
+			if (p.getDuracaoSurto() == 0) {
+				retiraProcesso(p);
 			}
-//			else{
-				p = p.next;
-//			}		
-			
-		}	
+			p.terminoUltimaExecucao = tempoDeExecucao;
+			p = p.next;
+		}
 		// calculo de média
 		media = tempoDeEspera / NodeProcesso.getContador();
-		
-		// JOptionPane.showMessageDialog(null, "Adicione pelo menos um
-		// processo");
-		// contadorObjeto;
-		// ordemDeExecucao="Executou processo ; }
-		
+
 	}
-	
-	public void retiraProcesso(NodeProcesso processo){
+
+	public void retiraProcesso(NodeProcesso processo) {
 		NodeProcesso p = filaProcessos.inicio;
-		
-		if(apenasUmNaFila()){
+
+		if (apenasUmNaFila()) {
 			p.next = null;
-			
-		}
-		else{
-			if(p.getContadorObjeto() == processo.getContadorObjeto()){
+
+		} else {
+			if (p.getContadorObjeto() == processo.getContadorObjeto()) {
 				filaProcessos.inicio = p.next;
 				filaProcessos.fim.next = p.next;
-			}
-			else{
-				
-				while(p.next.getContadorObjeto() != p.next.getContadorObjeto()){			
-					
+			} else {
+
+				while (p.next.getContadorObjeto() != p.next.getContadorObjeto()) {
+
 					p = p.next;
 				}
 				p.next = p.next.next;
+			}
 		}
-		}
-		
+
 	}
-	
-	public Boolean apenasUmNaFila(){
+
+	public Boolean apenasUmNaFila() {
 		NodeProcesso h = filaProcessos.inicio;
 		Boolean condicion = false;
-		if(h.getContadorObjeto() == h.next.getContadorObjeto())	{
+		if (h.getContadorObjeto() == h.next.getContadorObjeto()) {
 			condicion = true;
 		}
 		return condicion;
