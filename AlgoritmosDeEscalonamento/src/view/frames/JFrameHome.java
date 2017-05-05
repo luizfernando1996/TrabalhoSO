@@ -309,7 +309,7 @@ public class JFrameHome extends JFrame {
 
 	// Aqui se obtêm a linha da tabela
 	private Integer[] obterColunasProcesso(int i) {
-
+//as
 		DefaultTableModel dtm = (DefaultTableModel) table.getModel();
 		// int quantProcessos =
 		// ((DefaultTableModel)table.getModel()).getRowCount();
