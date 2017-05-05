@@ -34,16 +34,16 @@ public class RoundRobin {
 				p.setDuracaoSurto(0);				
 			}
 			if(p.getDuracaoSurto() == 0 ){
-				retiraProcesso(p);
-				p = filaProcessos.inicio;				
+			retiraProcesso(p);
+//				p = filaProcessos.inicio;				
 			}
-			else{
+//			else{
 				p = p.next;
-			}
-			// calculo de média
-			double media = tempoDeEspera / NodeProcesso.getContador();
+//			}		
 			
 		}	
+		// calculo de média
+		double media = tempoDeEspera / NodeProcesso.getContador();
 		
 		// JOptionPane.showMessageDialog(null, "Adicione pelo menos um
 		// processo");
@@ -55,18 +55,33 @@ public class RoundRobin {
 	public void retiraProcesso(NodeProcesso processo){
 		NodeProcesso p = filaProcessos.inicio;
 		
-		if(p.getContadorObjeto() == processo.getContadorObjeto()){
-			filaProcessos.inicio = p.next;
-			filaProcessos.fim.next = p.next;
+		if(apenasUmNaFila()){
+			p.next = null;
+			
 		}
 		else{
-			
-			while(p.next != null){
-				
-				if(p.next.getContadorObjeto() == p.getContadorObjeto()){
-					p.next = p.next.next;
-				}
+			if(p.getContadorObjeto() == processo.getContadorObjeto()){
+				filaProcessos.inicio = p.next;
+				filaProcessos.fim.next = p.next;
 			}
+			else{
+				
+				while(p.next.getContadorObjeto() != p.next.getContadorObjeto()){			
+					
+					p = p.next;
+				}
+				p.next = p.next.next;
+		}
+		}
+		
 	}
+	
+	public Boolean apenasUmNaFila(){
+		NodeProcesso h = filaProcessos.inicio;
+		Boolean condicion = false;
+		if(h.getContadorObjeto() == h.next.getContadorObjeto())	{
+			condicion = true;
+		}
+		return condicion;
 	}
 }
