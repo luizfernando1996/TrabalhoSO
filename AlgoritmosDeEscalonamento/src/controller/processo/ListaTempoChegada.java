@@ -33,8 +33,5 @@ public class ListaTempoChegada {
 			ant.next = novo;
 		}	
 	}
-	public NodeProcesso retonarListaComSentinela(){
-		return sentinela;
-	}	
 
 }
