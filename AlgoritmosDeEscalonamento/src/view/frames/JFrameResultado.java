@@ -7,6 +7,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import controller.processo.algoritmosEscalonamento.sjf.Sjf;
+import controller.processo.algoritmosEscalonamento.roundRobin.RoundRobin;
 import controller.processo.algoritmosEscalonamento.sjf.NodeResultadoSjf;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
@@ -37,7 +38,7 @@ public class JFrameResultado extends JFrame {
 		
 		JTextArea textArea = new JTextArea();
 		
-		JLabel lblOTempoDe_1 = new JLabel("O tempo de espera dos processos foi:");
+		JLabel lblOTempoDe_1 = new JLabel("O tempo de médio espera dos processos foi:");
 		lblOTempoDe_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -105,14 +106,12 @@ public class JFrameResultado extends JFrame {
 //			p = p.next;
 //		}
 		
-		
-		
-		//passar para a textArea.setText o tempo de espera do meu algoritmo
-		//passar para a textArea1 a ordem de execucao
 //		textArea.setText(tempoEspera);
 //		textArea_1.setText(mensagem);
 		
+		//passar para a textArea.setText o tempo de espera do meu algoritmo
+		//passar para a textArea1 a ordem de execucao
 
-
+		
 	}
 }
