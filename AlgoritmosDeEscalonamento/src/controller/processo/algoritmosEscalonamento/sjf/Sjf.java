@@ -37,16 +37,18 @@ public class Sjf {
 		double tempoDecorrido = p.getDuracaoSurto();
 		p=p.next;
 		while (p != null) {
-			mensagem+="\nO processo a executar foi o processo com identificador:" +p.getContadorObjeto();
 			if(p.getTempoChegada()<=tempoDecorrido){
 				tempoDeEspera+=(tempoDecorrido-p.getTempoChegada());
+				mensagem+="\nO processo a executar foi o processo com identificador:" +p.getContadorObjeto();
 			}
 			else
 			{
 				tempoDeEspera=tempoDeEspera/contProcessos;
 				insereNaListaDeResultados(mensagem,Double.toString(tempoDeEspera));
-				//mensagem="";
-				//tempoDeEspera=0;
+				mensagem="-----------------------------------SJF-----------------------------------\n";
+				tempoDeEspera=0;
+				contProcessos=0;
+				tempoDecorrido = p.getTempoChegada();
 			}
 			contProcessos++;
 			tempoDecorrido+=p.getDuracaoSurto();
